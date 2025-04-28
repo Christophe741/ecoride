@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Poppins, sans-serif;
+  background-color: #fff;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: linear-gradient(
+    90deg,
+    #7cd9a0 16.83%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.logo .green {
+  color: #205b3f;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+main {
+  background: linear-gradient(180deg, #fff 78.37%, #2adb59 100%);
+  flex: 1;
+}
+
+.hero-search {
+  background-image: url("../assets/images/driver.jpg");
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: lighten;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px;
+  color: #000000;
+  text-align: center;
+}
+
+.hero-search h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.search-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.search-form button {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 400;
+  padding: 10px;
+  font-size: 16px;
+  border: solid 1px black;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.hero-presentation {
+  padding-top: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 600px;
+}
+
+.hero-presentation h2 {
+  margin-bottom: 20px;
+}
+
+.car-image {
+  height: auto;
+  display: block;
+  margin-top: auto; /* Mettre la voiture en bas */
+}
+
+footer {
+  position: relative;
+  display: flex;
+  background-color: #2adb59;
+  padding: 20px;
+  justify-content: center;
+}
+
+footer .logo {
+  position: absolute;
+  color: #fff;
+  left: 20px;
+  bottom: 14px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+footer .mail,
+footer .mentions {
+  color: #000;
+  font-size: 14px;
+}
+
+footer .mentions {
+  position: absolute;
+  right: 20px;
+}
