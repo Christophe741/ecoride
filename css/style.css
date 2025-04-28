@@ -101,7 +101,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 600px;
+  height: 580px;
 }
 
 .hero-presentation h2 {
