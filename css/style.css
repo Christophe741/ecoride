@@ -1,3 +1,10 @@
+/*---------- 1. RESET  & BASE ----------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +20,7 @@ body {
   flex-direction: column;
 }
 
+/*---------- 2. GLOBAL STYLES  ----------*/
 header {
   background: linear-gradient(
     90deg,
@@ -49,10 +57,38 @@ nav a {
 }
 
 main {
-  background: linear-gradient(180deg, #fff 78.37%, #2adb59 100%);
   flex: 1;
 }
 
+footer {
+  position: relative;
+  display: flex;
+  background-color: #2adb59;
+  padding: 20px;
+  justify-content: center;
+}
+
+footer .logo {
+  position: absolute;
+  color: #fff;
+  left: 20px;
+  bottom: 14px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+footer .mail,
+footer .mentions {
+  color: #000;
+  font-size: 14px;
+}
+
+footer .mentions {
+  position: absolute;
+  right: 20px;
+}
+
+/*---------- 3. COMPOSANT : hero-search ----------*/
 .hero-search {
   background-image: url("../assets/images/driver.jpg");
   background-color: rgba(255, 255, 255, 0.6);
@@ -95,13 +131,18 @@ main {
   cursor: pointer;
 }
 
+/*---------- 4. PAGE : index.php ----------*/
+.page-index main {
+  background: linear-gradient(180deg, #fff 78.37%, #2adb59 100%);
+}
+
 .hero-presentation {
   padding-top: 40px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 580px;
+  height: 600px;
 }
 
 .hero-presentation h2 {
@@ -111,33 +152,5 @@ main {
 .car-image {
   height: auto;
   display: block;
-  margin-top: auto; /* Mettre la voiture en bas */
-}
-
-footer {
-  position: relative;
-  display: flex;
-  background-color: #2adb59;
-  padding: 20px;
-  justify-content: center;
-}
-
-footer .logo {
-  position: absolute;
-  color: #fff;
-  left: 20px;
-  bottom: 14px;
-  font-size: 24px;
-  font-weight: 600;
-}
-
-footer .mail,
-footer .mentions {
-  color: #000;
-  font-size: 14px;
-}
-
-footer .mentions {
-  position: absolute;
-  right: 20px;
+  margin-top: auto;
 }
