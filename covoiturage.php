@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body class="page-covoiturage">
 <?php require_once 'includes/header.php';?>
 <?php require_once 'includes/hero_search.php';?>
 
