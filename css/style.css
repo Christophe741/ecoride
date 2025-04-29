@@ -134,6 +134,7 @@ footer .mentions {
 /*---------- 4. PAGE : index.php ----------*/
 .page-index main {
   background: linear-gradient(180deg, #fff 78.37%, #2adb59 100%);
+  position: relative;
 }
 
 .hero-presentation {
@@ -142,7 +143,6 @@ footer .mentions {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 600px;
 }
 
 .hero-presentation h2 {
@@ -150,7 +150,6 @@ footer .mentions {
 }
 
 .car-image {
-  height: auto;
-  display: block;
-  margin-top: auto;
+  position: absolute;
+  bottom: 10px;
 }
