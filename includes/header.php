@@ -1,6 +1,4 @@
 <header>
-  <body class="page-<?= basename($_SERVER['PHP_SELF'], '.php') ?>">
-
     <a href="index.php" class="logo"><span class="green">E</span>co<span><span class="green">R</span>ide</span></a>
     <nav>
       <ul>
