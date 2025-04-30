@@ -95,6 +95,7 @@ footer .mentions {
   background-blend-mode: lighten;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   padding: 40px;
   color: #000000;
   text-align: center;
