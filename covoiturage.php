@@ -1,7 +1,6 @@
 <?php
 require_once 'db/config.php';
-require_once 'includes/header.php';
-require_once 'includes/hero_search.php';
+
 
 $hasTrajet = false;
 
@@ -28,16 +27,20 @@ if (!empty($_GET['depart']) && !empty($_GET['arrivee']) && !empty($_GET['date'])
   <meta charset="UTF-8">
   <title>Résultats covoiturage</title>
   <link rel="stylesheet" href="css/style.css">
+ <script src="js/fouc-fix.js"></script>
 </head>
-<body class="page-covoiturage">
-
+<body class="page-covoiturage" style="visibility: hidden">
+<?php require_once 'includes/header.php';?>
+<?php require_once 'includes/hero_search.php';?>
 <main>
   <section class="results">
     <h1>Résultats de recherche</h1>
 
     <?php if (!empty($depart) && !empty($arrivee) && !empty($date)) : ?>
       <?php while ($trajet = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+        <?php if (!$hasTrajet) : ?>
           <?php $hasTrajet = true; ?>
+        <?php endif; ?>
         <div class="trajet-card">
           <div class="trajet-left">
             <img class="photo-profil" src="assets/profils/<?= htmlspecialchars($trajet['photo']) ?>" alt="Photo de <?= htmlspecialchars($trajet['pseudo']) ?>">
@@ -52,10 +55,10 @@ if (!empty($_GET['depart']) && !empty($_GET['arrivee']) && !empty($_GET['date'])
           </div>
           <div class="trajet-right">
             <span class="badge-green">✔ Écologique</span>
-            <a class='detail-btn' href='detail.php?id=<?=$trajet['id']?>'>Détail</a>
+            <a class="detail-btn" href="detail.php?id=<?= $trajet['id'] ?>&depart=<?= urlencode($depart) ?>&arrivee=<?= urlencode($arrivee) ?>&date=<?= urlencode($date) ?>">Détail</a>
           </div>
         </div>
-      <?php endwhile; ?> 
+      <?php endwhile; ?>
 
       <?php if (!$hasTrajet) : ?>
         <p>Aucun trajet trouvé pour cette recherche.</p>
@@ -67,5 +70,7 @@ if (!empty($_GET['depart']) && !empty($_GET['arrivee']) && !empty($_GET['date'])
 </main>
 
 <?php require_once 'includes/footer.php'; ?>
+<script src="js/loader.js"></script>
+
 </body>
 </html>
