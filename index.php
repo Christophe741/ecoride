@@ -6,6 +6,8 @@
   <title>EcoRide - Accueil</title>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<script type="module" src="js/main.js"></script>
 
 </head>
 <body class="page-index">
@@ -25,6 +27,6 @@
 </main>
 
 <?php require_once 'includes/footer.php'; ?>
-  
+
 </body>
 </html>
