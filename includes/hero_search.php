@@ -4,6 +4,6 @@
       <input type="text" name="depart" placeholder="Ville de départ">
       <input type="text" name="arrivee" placeholder="Ville d'arrivée">
       <input type="date" name="date">
-      <button type="submit">Rechercher</button>
+      <button class="mobilebutton" type="submit">Rechercher</button>
     </form>
   </section>
