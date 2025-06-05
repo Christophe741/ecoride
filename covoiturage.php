@@ -31,7 +31,7 @@ if (!empty($_GET['depart']) && !empty($_GET['arrivee']) && !empty($_GET['date'])
 
 
 </head>
-<body class="page-covoiturage" style="visibility: hidden">
+<body class="page-covoiturage">
 <?php require_once 'includes/header.php';?>
 <?php require_once 'includes/hero_search.php';?>
 <main>
