@@ -1,9 +1,3 @@
-let domReady = (cb) => {
-  document.readyState === "interactive" || document.readyState === "complete"
-    ? cb()
-    : document.addEventListener("DOMContentLoaded", cb);
-};
-
-domReady(() => {
+export function fixFouc() {
   document.body.style.visibility = "visible";
-});
+}

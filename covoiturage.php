@@ -27,7 +27,9 @@ if (!empty($_GET['depart']) && !empty($_GET['arrivee']) && !empty($_GET['date'])
   <meta charset="UTF-8">
   <title>Résultats covoiturage</title>
   <link rel="stylesheet" href="css/style.css">
- <script src="js/fouc-fix.js"></script>
+ <script type="module" src="js/main.js"></script>
+
+
 </head>
 <body class="page-covoiturage" style="visibility: hidden">
 <?php require_once 'includes/header.php';?>
@@ -70,7 +72,6 @@ if (!empty($_GET['depart']) && !empty($_GET['arrivee']) && !empty($_GET['date'])
 </main>
 
 <?php require_once 'includes/footer.php'; ?>
-<script src="js/loader.js"></script>
 
 </body>
 </html>
