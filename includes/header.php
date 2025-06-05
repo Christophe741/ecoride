@@ -1,5 +1,6 @@
 <header>
     <a href="index.php" class="logo"><span class="green">E</span>co<span><span class="green">R</span>ide</span></a>
+  <div class="menu">
     <nav>
       <ul>
         <li><a href="covoiturage.php">Covoiturage</a></li>
@@ -8,4 +9,8 @@
         <li><a href="contact.php">Contact</a></li>
       </ul>
     </nav>
+  </div>
+      <span class="material-symbols-outlined menu-burger" id="toggler">
+menu
+</span>
   </header>
