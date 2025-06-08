@@ -1,5 +1,5 @@
 <header>
-    <a href="index.php" class="logo"><span class="green">E</span>co<span><span class="green">R</span>ide</span></a>
+    <a href="index.php" class="logo"><span class="green">E</span>co<span class="green">R</span>ide</a>
   <div class="menu">
     <nav>
       <ul>
