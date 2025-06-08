@@ -3,7 +3,7 @@ export function toggler() {
   const menu = document.querySelector(".menu");
   if (icon.innerHTML == "menu") {
     icon.innerHTML = "close";
-    menu.style.display = "block";
+    menu.style.display = "flex";
   } else {
     icon.innerHTML = "menu";
     menu.style.display = "none";
