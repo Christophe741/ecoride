@@ -1,9 +1,19 @@
 <?php
-$host = 'localhost';
-$dbname = 'ecoride';
-$user = 'root';
-$pass = ''; 
+$envFile = __DIR__ . '/../.env';
+if (file_exists($envFile)) {
+    $lines = file($envFile);
+    foreach ($lines as $line) {  
+            list($name, $value) = explode('=', $line, 2);
+            $name = trim($name);
+            $value = trim($value);
+            putenv("$name=$value");
+            }
+        }
 
+$host = 'localhost';  
+$dbname = 'ecoride';
+$user = getenv('DB_USER') ?: 'visiteur';
+$pass = getenv('DB_PASS') ?: '';
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
