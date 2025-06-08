@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['password'])) {
+if (!isset($_SESSION['role'])) {
     header('Location: ../connexion.php');
     exit;
 }
