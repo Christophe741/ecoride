@@ -10,7 +10,5 @@
       </ul>
     </nav>
   </div>
-      <span class="material-symbols-outlined menu-burger" id="toggler">
-menu
-</span>
+      <span class="material-symbols-outlined menu-burger" id="toggler">menu</span>
   </header>
