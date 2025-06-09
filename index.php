@@ -1,21 +1,16 @@
+<?php
+$pageTitle = "EcoRide - Accueil"; 
+?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoRide - Accueil</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-<script type="module" src="js/main.js"></script>
+<?php require_once 'includes/head.php';?>
 
-</head>
 <body class="page-index">
+  
 <?php require_once 'includes/header.php';?>
 <?php require_once 'includes/hero_search.php';?>
 
 <main>
-  
   <section class="hero-presentation">
     <h2>Réinventons les trajets du quotidien</h2>
     <p>
@@ -27,6 +22,5 @@
 </main>
 
 <?php require_once 'includes/footer.php'; ?>
-
 </body>
 </html>

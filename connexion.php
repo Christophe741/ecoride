@@ -1,4 +1,5 @@
 <?php
+$pageTitle = "Connexion"; 
 session_start();
 require_once 'db/config.php';
 
@@ -26,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-</head>
+<?php require_once 'includes/head.php';?>
+
 <body>
+    <main class="form-container">
+    <?php require_once 'includes/header.php';?>
     <h2>Connexion</h2>
     <?php if (!empty($erreur)) echo "<p style='color:red;'>$erreur</p>"; ?>
     <form method="post">
@@ -38,5 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" name="mot_de_passe" placeholder="Mot de passe" required><br>
         <button type="submit">Se connecter</button>
     </form>
+</main>
+<?php require_once 'includes/footer.php'; ?>
 </body>
 </html>

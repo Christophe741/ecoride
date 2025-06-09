@@ -1,10 +1,10 @@
+<?php
+$pageTitle = "Inscription"; 
+?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Inscription - EcoRide</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
+<?php require_once 'includes/head.php';?>
+
 <body class="page-inscription">
 <?php require_once 'includes/header.php'; ?>
 <main class="form-container">

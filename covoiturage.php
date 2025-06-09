@@ -1,4 +1,6 @@
 <?php
+$pageTitle = "Résultats covoiturage"; 
+
 require_once 'db/config.php';
 
 
@@ -23,21 +25,15 @@ if (!empty($_GET['depart']) && !empty($_GET['arrivee']) && !empty($_GET['date'])
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Résultats covoiturage</title>
-  <link rel="stylesheet" href="css/style.css">
- <script type="module" src="js/main.js"></script>
+<?php require_once 'includes/head.php';?>
 
-
-</head>
 <body class="page-covoiturage">
 <?php require_once 'includes/header.php';?>
 <?php require_once 'includes/hero_search.php';?>
+
 <main>
   <section class="results">
     <h1>Résultats de recherche</h1>
-
     <?php if (!empty($depart) && !empty($arrivee) && !empty($date)) : ?>
       <?php while ($trajet = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
         <?php if (!$hasTrajet) : ?>
@@ -61,7 +57,6 @@ if (!empty($_GET['depart']) && !empty($_GET['arrivee']) && !empty($_GET['date'])
           </div>
         </div>
       <?php endwhile; ?>
-
       <?php if (!$hasTrajet) : ?>
         <p>Aucun trajet trouvé pour cette recherche.</p>
       <?php endif; ?>
@@ -70,7 +65,6 @@ if (!empty($_GET['depart']) && !empty($_GET['arrivee']) && !empty($_GET['date'])
     <?php endif; ?>
   </section>
 </main>
-
 <?php require_once 'includes/footer.php'; ?>
 
 </body>

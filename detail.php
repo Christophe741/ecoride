@@ -1,4 +1,7 @@
 <?php
+$pageTitle = "Détail du trajet"; 
+?>
+<?php
 session_start();
 require_once 'db/config.php';
 
@@ -31,18 +34,13 @@ if (!$trajet) {
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Détail du trajet</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+<?php require_once 'includes/head.php';?>
 
+<body>
 <?php require_once 'includes/header.php'; ?>
 
 <main class="detail-container">
   <h1>Détail du trajet</h1>
-
   <div class="trajet-detail-card">
     <div class="conducteur-info">
       <img src="assets/profils/<?= htmlspecialchars($trajet['photo']) ?>" alt="Photo de <?= htmlspecialchars($trajet['pseudo']) ?>" class="photo-profil">
@@ -63,6 +61,5 @@ if (!$trajet) {
 </main>
 
 <?php require_once 'includes/footer.php'; ?>
-
 </body>
 </html>

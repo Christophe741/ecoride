@@ -260,6 +260,10 @@ section h1 {
   color: #2adb59;
   font-weight: bold;
 }
+/*---------- 6. PAGES : contact.php et inscrition.php ----------*/
+.form-container {
+  text-align: center;
+}
 @media (max-width: 768px) {
   header {
     align-items: flex-start;
