@@ -1,10 +1,6 @@
 <?php
 $pageTitle = "Détail du trajet";
 session_start();
-
-$depart = urlencode($_GET['depart'] ?? '');
-$arrivee = urlencode($_GET['arrivee'] ?? '');
-$date = urlencode($_GET['date'] ?? '');
 ?>
 
 <!DOCTYPE html>
