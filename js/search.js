@@ -40,7 +40,6 @@ function buildCard(trajet, query) {
 
 domReady(() => {
   const container = document.querySelector("#results");
-  if (!container) return;
 
   const params = new URLSearchParams(window.location.search);
   const depart = params.get("depart");
