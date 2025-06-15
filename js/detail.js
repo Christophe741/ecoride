@@ -2,8 +2,6 @@ import { domReady } from "./domReady.js";
 
 domReady(() => {
   const container = document.querySelector("#trajet-detail");
-  if (!container) return;
-
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   const depart = params.get("depart");
@@ -37,7 +35,13 @@ domReady(() => {
             <p><strong>Arrivée :</strong> ${t.ville_arrivee}</p>
             <p><strong>Date et heure :</strong> ${new Date(
               t.date_depart
-            ).toLocaleString("fr-FR")}</p>
+            ).toLocaleString("fr-FR", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+            })}</p>
             <p><strong>Prix :</strong> ${t.prix} €</p>
             <p><strong>Places disponibles :</strong> ${t.places}</p>
           </div>
