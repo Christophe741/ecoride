@@ -23,16 +23,15 @@ Créer un site web permettant aux utilisateurs de :
 
 ## Lancer le projet en local
 
-1. Cloner le projet dans `htdocs` de XAMPP (ou dans le répertoire de votre serveur web).
+1. Cloner le projet où vous le souhaitez.
+2. Copier le fichier `.env.example` en `.env`.
+3. Lancer l'application avec Docker :
 
 ```sh
-git clone https://github.com/Christophe741/ecoride.git
+docker-compose up --build
 ```
 
-2. Copier le fichier `.env.example` en `.env` puis renseigner vos identifiants MySQL.
-3. Importer la base de données `db/ecoride.sql` dans votre serveur MySQL.
-4. Démarrer Apache et MySQL via XAMPP (ou votre environnement PHP/MySQL).
-5. Accéder au site via : [http://localhost/EcoRide](http://localhost/EcoRide).
+4. Le site est alors accessible sur [http://localhost:8080](http://localhost:8080) et l'interface PhpMyAdmin sur [http://localhost:8081](http://localhost:8081).
 
 ## Auteur
 
