@@ -11,7 +11,6 @@ session_start();
 <?php require_once 'includes/header.php'; ?>
 
 <main class="detail-container" id="trajet-detail">
-  <h1>Détail du trajet</h1>
 </main>
 
 <script type="module" src="js/detail.js"></script>

@@ -17,11 +17,12 @@ domReady(() => {
     .then((res) => res.json())
     .then((data) => {
       if (!data.success) {
-        container.textContent = "Trajet introuvable.";
+        container.innerHTML = `<h1>Détail du trajet</h1><p>Trajet introuvable.</p>`;
         return;
       }
       const t = data.trajet;
       container.innerHTML = `
+        <h1>Détail du trajet</h1>
         <div class="trajet-detail-card">
           <div class="conducteur-info">
             <img src="assets/profils/${t.photo}" alt="Photo de ${
@@ -44,10 +45,16 @@ domReady(() => {
             })}</p>
             <p><strong>Prix :</strong> ${t.prix} €</p>
             <p><strong>Places disponibles :</strong> ${t.places}</p>
-            <p><strong>Description :</strong> <span id="description-text">${
-              t.description || "Aucune description"
-            }</span></p>
-          </div>
+        <p><strong>Description :</strong> <span id="description-text">${
+          t.description || "Aucune description"
+        }</span></p>
+            <div class="preferences-info">
+              <p><strong>Ambiance :</strong> ${t.ambiance}</p>
+              <p><strong>Musique :</strong> ${t.musique}</p>
+              <p><strong>Fumeur :</strong> ${t.fumeur}</p>
+              <p><strong>Animaux :</strong> ${t.animaux}</p>
+            </div>
+            </div>
         </div>
       `;
       const link = document.createElement("a");
@@ -59,6 +66,6 @@ domReady(() => {
       container.appendChild(link);
     })
     .catch(() => {
-      container.textContent = "Erreur lors du chargement du trajet.";
+      container.innerHTML = `<h1>Détail du trajet</h1><p>Erreur lors du chargement du trajet.</p>`;
     });
 });

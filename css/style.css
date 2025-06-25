@@ -228,6 +228,11 @@ section h1 {
   padding: 20px;
 }
 
+.detail-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .trajet-detail-card {
   display: flex;
   gap: 30px;
@@ -251,6 +256,14 @@ section h1 {
 
 .trajet-info p {
   margin: 6px 0;
+}
+
+.preferences-info {
+  margin-top: 15px;
+}
+
+.preferences-info p {
+  margin: 4px 0;
 }
 
 .btn-retour {
