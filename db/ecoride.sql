@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : lun. 09 juin 2025 à 17:18
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Hôte : db
+-- Généré le : mer. 25 juin 2025 à 22:16
+-- Version du serveur : 10.4.34-MariaDB-1:10.4.34+maria~ubu2004
+-- Version de PHP : 8.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `ecoride`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `preferences_utilisateur`
+--
+
+CREATE TABLE `preferences_utilisateur` (
+  `utilisateur_id` int(11) NOT NULL,
+  `ambiance` enum('Je suis très bavard','Quand je suis en confiance, j’aime échanger','Je suis plutôt quelqu’un de réservé.') DEFAULT 'Quand je suis en confiance, j’aime échanger',
+  `musique` enum('De la musique du début à la fin !','Tout dépend du style musical','Rien ne vaut le silence') DEFAULT 'Tout dépend du style musical',
+  `fumeur` enum('Fumer en voiture ne me dérange pas','Ok pour des pauses cigarette à l’extérieur','Merci de ne pas fumer') DEFAULT 'Ok pour des pauses cigarette à l’extérieur',
+  `animaux` enum('Les animaux sont les bienvenus !','Voyager avec un animal, pourquoi pas selon le cas','Je préfère voyager sans animaux.') DEFAULT 'Voyager avec un animal, pourquoi pas selon le cas'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Déchargement des données de la table `preferences_utilisateur`
+--
+
+INSERT INTO `preferences_utilisateur` (`utilisateur_id`, `ambiance`, `musique`, `fumeur`, `animaux`) VALUES
+(1, 'Quand je suis en confiance, j’aime échanger', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas'),
+(2, 'Quand je suis en confiance, j’aime échanger', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas'),
+(4, 'Quand je suis en confiance, j’aime échanger', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas');
 
 -- --------------------------------------------------------
 
@@ -120,6 +143,12 @@ INSERT INTO `vehicules` (`id`, `user_id`, `marque`, `modele`, `couleur`, `type_e
 --
 
 --
+-- Index pour la table `preferences_utilisateur`
+--
+ALTER TABLE `preferences_utilisateur`
+  ADD PRIMARY KEY (`utilisateur_id`);
+
+--
 -- Index pour la table `reservations`
 --
 ALTER TABLE `reservations`
@@ -181,6 +210,12 @@ ALTER TABLE `vehicules`
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `preferences_utilisateur`
+--
+ALTER TABLE `preferences_utilisateur`
+  ADD CONSTRAINT `preferences_utilisateur_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `reservations`
