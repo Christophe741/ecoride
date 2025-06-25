@@ -44,6 +44,9 @@ domReady(() => {
             })}</p>
             <p><strong>Prix :</strong> ${t.prix} €</p>
             <p><strong>Places disponibles :</strong> ${t.places}</p>
+            <p><strong>Description :</strong> <span id="description-text">${
+              t.description || "Aucune description"
+            }</span></p>
           </div>
         </div>
       `;
