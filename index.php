@@ -1,5 +1,6 @@
 <?php
-$pageTitle = "EcoRide - Accueil"; 
+session_start();
+$pageTitle = "EcoRide - Accueil";
 ?>
 <!DOCTYPE html>
 <html lang="fr">

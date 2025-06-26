@@ -1,6 +1,6 @@
 <?php
-$pageTitle = "Détail du trajet";
 session_start();
+$pageTitle = "Détail du trajet";
 ?>
 
 <!DOCTYPE html>

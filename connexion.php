@@ -1,6 +1,6 @@
 <?php
-$pageTitle = "Connexion"; 
 session_start();
+$pageTitle = "Connexion"; 
 require_once 'db/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user['role'] === 'admin') {
             header('Location: admin/index.php');
         } else {
-            header('Location: espace_utilisateur.php');
+            header('Location: index.php');
         }
         exit;
     } else {

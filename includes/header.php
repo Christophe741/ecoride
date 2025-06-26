@@ -4,8 +4,12 @@
     <nav>
       <ul>
         <li><a href="covoiturage.php">Covoiturage</a></li>
-        <li><a href="inscription.php">Créer un compte</a></li>
-        <li><a href="connexion.php">Se connecter</a></li>
+          <?php if (!isset($_SESSION['role'])): ?>
+          <li><a href="inscription.php">Créer un compte</a></li>
+          <li><a href="connexion.php">Se connecter</a></li>
+        <?php else: ?>
+          <li><a href="logout.php">Se déconnecter</a></li>
+        <?php endif; ?>
         <li><a href="contact.php">Contact</a></li>
       </ul>
     </nav>
