@@ -1,5 +1,34 @@
 <?php
-$pageTitle = "Inscription"; 
+session_start();
+$pageTitle = "Inscription";
+require_once 'db/config.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pseudo = trim($_POST['pseudo'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if ($pseudo && filter_var($email, FILTER_VALIDATE_EMAIL) && $password) {
+        $stmt = $pdo->prepare('SELECT id FROM users WHERE email = ?');
+        $stmt->execute([$email]);
+
+        if ($stmt->fetch()) {
+            $erreur = "Un compte existe déjà avec cet email.";
+        } else {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $insert = $pdo->prepare('INSERT INTO users (pseudo, email, password) VALUES (?, ?, ?)');
+
+            if ($insert->execute([$pseudo, $email, $hash])) {
+                header('Location: connexion.php');
+                exit;
+            } else {
+                $erreur = "Erreur lors de l'inscription.";
+            }
+        }
+    } else {
+        $erreur = "Veuillez remplir tous les champs correctement.";
+    }
+} 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,7 +38,8 @@ $pageTitle = "Inscription";
 <?php require_once 'includes/header.php'; ?>
 <main class="form-container">
   <h1>Créer un compte</h1>
-  <form method="post" action="#">
+   <?php if (!empty($erreur)) echo "<p style='color:red;'>$erreur</p>"; ?>
+  <form method="post" action="">
     <input type="text" name="pseudo" placeholder="Pseudo" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="Mot de passe" required>
