@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Mentions légales";
 ?>
 <!DOCTYPE html>
