@@ -9,11 +9,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if ($pseudo && filter_var($email, FILTER_VALIDATE_EMAIL) && $password) {
-        $stmt = $pdo->prepare('SELECT id FROM users WHERE email = ?');
-        $stmt->execute([$email]);
+        $stmt = $pdo->prepare('SELECT pseudo, email FROM users WHERE pseudo = ? OR email = ?');
+        $stmt->execute([$pseudo, $email]);
+        $existing = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($stmt->fetch()) {
-            $erreur = "Un compte existe déjà avec cet email.";
+       if ($existing) {
+            if ($existing['email'] === $email) {
+                $erreur = "Un compte existe déjà avec cet email.";
+            } else {
+                $erreur = "Ce pseudo est déjà utilisé.";
+            }
         } else {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $insert = $pdo->prepare('INSERT INTO users (pseudo, email, password) VALUES (?, ?, ?)');
