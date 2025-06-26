@@ -75,12 +75,14 @@ footer .logo {
   bottom: 14px;
   font-size: 24px;
   font-weight: 600;
+  text-decoration: none;
 }
 
 footer .mail,
 footer .mentions {
   color: #000;
   font-size: 14px;
+  text-decoration: none;
 }
 
 .mentions {
