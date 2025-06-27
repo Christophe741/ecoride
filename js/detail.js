@@ -17,7 +17,7 @@ domReady(() => {
     .then((res) => res.json())
     .then((data) => {
       if (!data.success) {
-        container.innerHTML = `<h1>Détail du trajet</h1><p>Trajet introuvable.</p>`;
+        container.innerHTML = `<p>Trajet introuvable.</p>`;
         return;
       }
       const t = data.trajet;
