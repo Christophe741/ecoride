@@ -225,14 +225,21 @@ section h1 {
   text-decoration: none;
 }
 /*---------- 6. PAGE : detail.php ----------*/
+.page-detail section {
+  display: inline-block;
+}
+.page-detail h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.page-detail {
+  text-align: center;
+  margin-bottom: 30px;
+}
 .detail-container {
   margin: auto;
   padding: 20px;
-}
-
-.detail-container h1 {
-  text-align: center;
-  margin-bottom: 30px;
 }
 
 .trajet-detail-card {
@@ -276,7 +283,7 @@ section h1 {
   font-weight: bold;
 }
 
-/*---------- 6. PAGE : detail.php ----------*/
+/*---------- 6. PAGE : Mentions légales.php ----------*/
 .mentions-legales-container h2 {
   text-align: center;
   margin-bottom: 40px;

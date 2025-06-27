@@ -22,7 +22,6 @@ domReady(() => {
       }
       const t = data.trajet;
       container.innerHTML = `
-        <h1>Détail du trajet</h1>
         <div class="trajet-detail-card">
           <div class="conducteur-info">
             <img src="assets/profils/${t.photo}" alt="Photo de ${
@@ -66,6 +65,6 @@ domReady(() => {
       container.appendChild(link);
     })
     .catch(() => {
-      container.innerHTML = `<h1>Détail du trajet</h1><p>Erreur lors du chargement du trajet.</p>`;
+      container.innerHTML = `<p>Erreur lors du chargement du trajet.</p>`;
     });
 });
