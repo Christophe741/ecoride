@@ -13,7 +13,7 @@ domReady(() => {
     return;
   }
 
-  fetch(`api/detail.php?id=${encodeURIComponent(id)}`)
+  fetch(`api/get_ride_detail.php?id=${encodeURIComponent(id)}`)
     .then((res) => res.json())
     .then((data) => {
       if (!data.success) {
@@ -53,11 +53,13 @@ domReady(() => {
               <p><strong>Fumeur :</strong> ${t.fumeur}</p>
               <p><strong>Animaux :</strong> ${t.animaux}</p>
             </div>
+           <div id="avis-section"></div>
+
             </div>
         </div>
       `;
       const link = document.createElement("a");
-      link.href = `covoiturage.php?depart=${depart || ""}&arrivee=${
+      link.href = `rides.php?depart=${depart || ""}&arrivee=${
         arrivee || ""
       }&date=${date || ""}`;
       link.className = "btn-retour";

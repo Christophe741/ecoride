@@ -9,7 +9,7 @@
 
 <body class="page-covoiturage">
 <?php require_once 'includes/header.php';?>
-<?php require_once 'includes/hero_search.php';?>
+<?php require_once 'includes/search_section.php';?>
 
 <main>
   <section class="results">
@@ -18,7 +18,7 @@
   </section>
 </main>
 
-<script type="module" src="js/search.js"></script>
+<script type="module" src="js/rideSearch.js"></script>
 <?php require_once 'includes/footer.php'; ?>
 </body>
 </html>

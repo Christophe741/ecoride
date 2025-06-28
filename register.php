@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insert = $pdo->prepare('INSERT INTO users (pseudo, email, password) VALUES (?, ?, ?)');
 
             if ($insert->execute([$pseudo, $email, $hash])) {
-                header('Location: connexion.php');
+                header('Location: login.php');
                 exit;
             } else {
                 $erreur = "Erreur lors de l'inscription.";

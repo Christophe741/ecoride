@@ -30,7 +30,7 @@ function buildCard(trajet, query) {
   link.className = "detail-btn";
   const params = new URLSearchParams(query);
   params.set("id", trajet.id);
-  link.href = `detail.php?${params.toString()}`;
+  link.href = `rideDetail.php?${params.toString()}`;
   link.textContent = "Détail";
   right.append(badge, link);
 
@@ -53,7 +53,7 @@ domReady(() => {
   }
 
   fetch(
-    `api/search.php?depart=${encodeURIComponent(
+    `api/get_rides.php?depart=${encodeURIComponent(
       depart
     )}&arrivee=${encodeURIComponent(arrivee)}&date=${encodeURIComponent(date)}`
   )

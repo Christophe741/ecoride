@@ -9,7 +9,7 @@ $pageTitle = "EcoRide - Accueil";
 <body class="page-index">
   
 <?php require_once 'includes/header.php';?>
-<?php require_once 'includes/hero_search.php';?>
+<?php require_once 'includes/search_section.php';?>
 
 <main>
   <section class="hero-presentation">
@@ -18,7 +18,7 @@ $pageTitle = "EcoRide - Accueil";
       EcoRide est une plateforme de covoiturage pensée pour ceux qui veulent bouger autrement.<br>
       Ensemble, réduisons notre impact environnemental tout en rendant les trajets plus économiques et conviviaux.
     </p>
-    <img src="assets/images/voiture.png" class="car-image" alt="Illustration d'une voiture écologique">
+    <img src="assets/images/car.png" class="car-image" alt="Illustration d'une voiture écologique">
   </section>
 </main>
 

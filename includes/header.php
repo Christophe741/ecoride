@@ -3,10 +3,10 @@
   <div class="menu">
     <nav>
       <ul>
-        <li><a href="covoiturage.php">Covoiturage</a></li>
+        <li><a href="rides.php">Covoiturage</a></li>
           <?php if (!isset($_SESSION['role'])): ?>
-          <li><a href="inscription.php">Créer un compte</a></li>
-          <li><a href="connexion.php">Se connecter</a></li>
+          <li><a href="register.php">Créer un compte</a></li>
+          <li><a href="login.php">Se connecter</a></li>
         <?php else: ?>
           <li><a href="logout.php">Se déconnecter</a></li>
         <?php endif; ?>

@@ -16,7 +16,7 @@ $pageTitle = "Détail du trajet";
  </section>
 </main>
 
-<script type="module" src="js/detail.js"></script>
+<script type="module" src="js/rideDetail.js"></script>
 <?php require_once 'includes/footer.php'; ?>
 </body>
 </html>
