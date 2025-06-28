@@ -26,7 +26,8 @@ main {
   flex: 1;
 }
 
-footer {
+/*---------- 3. COMPONENT : footer.php ----------*/
+.footer {
   position: relative;
   display: flex;
   background-color: #2adb59;
@@ -34,7 +35,7 @@ footer {
   justify-content: center;
 }
 
-footer .logo {
+.footer__logo {
   position: absolute;
   color: #fff;
   left: 20px;
@@ -44,22 +45,23 @@ footer .logo {
   text-decoration: none;
 }
 
-footer .mail,
-footer .mentions {
+.footer__logo-part--green {
+  color: #205b3f;
+}
+
+.footer__mail,
+.footer__legal {
   color: #000;
   font-size: 14px;
   text-decoration: none;
 }
 
-.mentions {
+.footer__legal {
   position: absolute;
   right: 20px;
 }
-span.menu-burger {
-  display: none;
-}
 
-/*---------- 3. COMPONENT : header.php ----------*/
+/*---------- 4. COMPONENT : header.php ----------*/
 .site-header {
   background: linear-gradient(
     90deg,
@@ -94,8 +96,10 @@ span.menu-burger {
   display: flex;
   gap: 15px;
 }
-
-/*---------- 3. COMPONENT : search_section ----------*/
+.menu-burger {
+  display: none;
+}
+/*---------- 5. COMPONENT : search_section ----------*/
 .hero-search {
   background-image: url("../assets/images/driver.jpg");
   background-color: rgba(255, 255, 255, 0.6);
@@ -139,7 +143,7 @@ span.menu-burger {
   cursor: pointer;
 }
 
-/*---------- 4. PAGE : index.php ----------*/
+/*---------- 6. PAGE : index.php ----------*/
 .home-page__main {
   background: linear-gradient(180deg, #fff 78.37%, #2adb59 100%);
   position: relative;
@@ -163,7 +167,7 @@ span.menu-burger {
   transform: translateX(-50%);
 }
 
-/*---------- 5. PAGE : rides.php ----------*/
+/*---------- 7. PAGE : rides.php ----------*/
 .results {
   padding: 40px;
   text-align: center;
@@ -227,7 +231,7 @@ section h1 {
   cursor: pointer;
   text-decoration: none;
 }
-/*---------- 6. PAGE : rideDetail.php ----------*/
+/*---------- 8. PAGE : rideDetail.php ----------*/
 .page-detail section {
   display: inline-block;
 }
@@ -286,7 +290,7 @@ section h1 {
   font-weight: bold;
 }
 
-/*---------- 7. PAGE : legal.php ----------*/
+/*---------- 9. PAGE : legal.php ----------*/
 .mentions-legales-container h2 {
   text-align: center;
   margin-bottom: 40px;
@@ -309,7 +313,7 @@ section h1 {
   text-align: center;
   margin-bottom: 10px;
 }
-/*---------- 8. PAGES : contact.php et register.php ----------*/
+/*---------- 10. PAGES : contact.php et register.php ----------*/
 .form-container {
   text-align: center;
 }
