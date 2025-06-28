@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mer. 25 juin 2025 à 22:16
+-- Généré le : sam. 28 juin 2025 à 06:44
 -- Version du serveur : 10.4.34-MariaDB-1:10.4.34+maria~ubu2004
 -- Version de PHP : 8.2.27
 
@@ -82,7 +82,7 @@ CREATE TABLE `trajets` (
 --
 
 INSERT INTO `trajets` (`id`, `conducteur_id`, `vehicule_id`, `ville_depart`, `ville_arrivee`, `date_depart`, `prix`, `places`, `duree`, `created_at`) VALUES
-(4, 1, 1, 'Paris', 'Lyon', '2025-05-10 14:00:00', 25.00, 3, NULL, '2025-04-30 15:49:05'),
+(4, 1, 1, 'Paris', 'Lyon', '2025-06-10 14:00:00', 25.00, 3, NULL, '2025-04-30 15:49:05'),
 (5, 2, 2, 'Paris', 'Lyon', '2025-05-10 12:00:00', 20.00, 2, NULL, '2025-04-30 16:11:55');
 
 -- --------------------------------------------------------
@@ -109,10 +109,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `role`, `credits`, `note`, `is_active`, `created_at`, `photo`) VALUES
-(1, 'Sophie', 'Sophie@example.com', 'test1234', 'passager', 20, 5, 1, '2025-04-23 09:01:57', 'sophie.jpg'),
-(2, 'David', 'test@ecoride.com', '$2y$10$pHgEFdp97DMDp6xIPdVVruBJrsjEWvDst78x1OX/node.P47pMDRK', 'conducteur', 30, 5, 1, '2025-04-30 16:11:55', 'david.jpg'),
-(3, '', 'admin@ecoride.fr', '$2y$10$6x3/pH5sGZK2kpUO4U2RmenQHEFDpsBsQaoCODfJnqtnmBUeSEOH.', 'admin', 20, 5, 1, '2025-05-01 13:42:56', 'default-profile.png'),
-(4, 'antoine', 'test34@ecoride.com', '123', 'passager', 20, 5, 1, '2025-05-12 22:55:23', 'default-profile.png');
+(1, 'Sophie', 'Sophie@example.com', '$2y$12$iUFj6TRjUSCxGkiit637z.T/zmulPD2WzAZs55dUf/BsybzkcqMee', 'conducteur', 20, 5, 1, '2025-04-23 09:01:57', 'sophie.jpg'),
+(2, 'David', 'test@ecoride.com', '$2y$12$5G6Qt7zPGsuIj6/iZqS4fOeZwdG3W9fvbhdYfIbeyTyvOcDjjJyn.', 'conducteur', 30, 5, 1, '2025-04-30 16:11:55', 'david.jpg'),
+(3, 'admin', 'admin@ecoride.fr', '$2y$10$6x3/pH5sGZK2kpUO4U2RmenQHEFDpsBsQaoCODfJnqtnmBUeSEOH.', 'admin', 20, 5, 1, '2025-05-01 13:42:56', 'default-profile.png'),
+(4, 'antoine', 'test34@ecoride.com', '123', 'passager', 20, 5, 1, '2025-05-12 22:55:23', 'default-profile.png'),
+(5, 'Marc', 'marc@test.com', '$2y$10$beo6mlt524q9uDIajFVAPOKPp7UbdCZBhZ8pZJLATbXCEsSRybZEm', 'passager', 20, 5, 1, '2025-06-26 21:44:41', 'default-profile.png'),
+(7, 'henry', 'henry@test.com', '$2y$10$UGk62pznoKqa30/MG53OauzXPVBOV.rtmtKWWuw1goHUsSoey4di2', 'passager', 20, 5, 1, '2025-06-26 22:54:00', 'default-profile.png');
 
 -- --------------------------------------------------------
 
@@ -199,7 +201,7 @@ ALTER TABLE `trajets`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `vehicules`
