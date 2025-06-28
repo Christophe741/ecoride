@@ -4,7 +4,7 @@ $pageTitle = "Connexion";
 require_once 'db/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
+    $email = $_POST['email']; 
     $mot_de_passe = $_POST['mot_de_passe'];
 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
