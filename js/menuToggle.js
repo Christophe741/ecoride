@@ -1,3 +1,4 @@
+// Fonction pour afficher ou masquer le menu mobile
 export function toggler() {
   const icon = document.querySelector("#toggler");
   const menu = document.querySelector(".menu");
