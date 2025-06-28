@@ -168,12 +168,15 @@ main {
 }
 
 /*---------- 7. PAGE : rides.php ----------*/
-.results {
+.ride-results__section {
   padding: 40px;
   text-align: center;
 }
-
-.trajet-card {
+.ride-results__title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.ride-card {
   display: flex;
   align-items: center;
   border: 1px solid #ccc;
@@ -184,7 +187,7 @@ main {
   max-width: 800px;
 }
 
-.trajet-left .photo-profil {
+.ride-card__photo {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -192,27 +195,22 @@ main {
   border: 2px solid #ccc;
 }
 
-.trajet-middle {
+.ride-card__middle {
   flex: 1;
 }
 
-section h1 {
-  font-size: 25px;
-  margin-bottom: 20px;
-}
-
-.trajet-middle h3 {
+.ride-card__middle .ride-card__title {
   margin-bottom: 6px;
 }
 
-.trajet-right {
+.ride-card__right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
 }
 
-.badge-green {
+.ride-card__right .ride-card__badge {
   background-color: #32cd32;
   color: white;
   padding: 4px 8px;
@@ -220,7 +218,7 @@ section h1 {
   font-size: 14px;
 }
 
-.detail-btn {
+.ride-card__right .ride-card__button {
   background-color: #ace9e6;
   color: #000000;
   font-weight: 400;
