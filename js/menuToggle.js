@@ -1,6 +1,6 @@
 export function toggler() {
   const icon = document.querySelector("#toggler");
-  const menu = document.querySelector(".menu");
+  const menu = document.querySelector(".site-header__menu");
   const body = document.body;
 
   if (icon.innerHTML == "menu") {
