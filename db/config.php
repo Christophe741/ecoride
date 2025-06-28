@@ -12,7 +12,6 @@ if (file_exists($envFile)) {
     }
 }
 
-
 $host = getenv('DB_HOST');
 $dbname = getenv('DB_NAME');
 $user = getenv('DB_USER');
