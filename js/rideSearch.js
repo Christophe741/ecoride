@@ -21,15 +21,22 @@ function buildCard(trajet, query) {
   title.textContent = trajet.pseudo;
   middle.appendChild(title);
   const note = document.createElement("p");
-  note.textContent = `Note : ${trajet.note} / 5`;
+  note.appendChild(document.createElement("strong")).textContent = "Note :";
+  note.append(` ${trajet.note} / 5`);
   const places = document.createElement("p");
-  places.textContent = `Places restantes : ${trajet.places}`;
+  places.appendChild(document.createElement("strong")).textContent =
+    "Places restantes :";
+  places.append(` ${trajet.places}`);
   const prix = document.createElement("p");
-  prix.textContent = `Prix : ${trajet.prix} €`;
+  prix.appendChild(document.createElement("strong")).textContent = "Prix :";
+  prix.append(` ${trajet.prix} €`);
   const depart = document.createElement("p");
-  depart.textContent = `Départ : ${trajet.ville_depart}`;
+  depart.appendChild(document.createElement("strong")).textContent = "Départ :";
+  depart.append(` ${trajet.ville_depart}`);
   const arrivee = document.createElement("p");
-  arrivee.textContent = `Arrivée : ${trajet.ville_arrivee}`;
+  arrivee.appendChild(document.createElement("strong")).textContent =
+    "Arrivée :";
+  arrivee.append(` ${trajet.ville_arrivee}`);
 
   middle.append(title, note, places, prix, depart, arrivee);
 
