@@ -1,5 +1,5 @@
 <footer class="footer">
-  <a href="index.php" class="footer__logo footer__logo--desktop">
+  <a href="index.php" class="footer__logo footer__logo--hide-mobile">
     <span class="footer__logo-part footer__logo-part--green">E</span>co<span class="footer__logo-part footer__logo-part--green">R</span>ide
   </a>
   

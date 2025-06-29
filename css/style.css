@@ -96,7 +96,7 @@ main {
   display: flex;
   gap: 15px;
 }
-.menu-burger {
+.site-header__burger {
   display: none;
 }
 /*---------- 5. COMPONENT : search_section ----------*/
@@ -311,41 +311,39 @@ main {
 }
 /*---------- MEDIA QUERIES ----------*/
 @media (max-width: 768px) {
-  header {
-    align-items: flex-start;
-  }
   footer {
     flex-direction: column;
     align-items: center;
   }
 
-  .mentions {
+  .footer__legal {
     position: static;
     right: auto;
-  }
-  ul {
-    flex-direction: column;
-    align-items: flex-end;
   }
 
   .form-search {
     flex-direction: column;
   }
-  .hero__image {
+
+  .hero__illustration {
     position: static;
     margin-top: 20px;
+    transform: none;
+  }
+  .hero__image {
     max-width: 200px;
   }
-  .hidemobile {
+
+  .footer__logo--hide-mobile {
     display: none;
   }
 
-  .search-form .mobilebutton {
+  .form-search__button {
     min-width: 200px;
     align-self: center;
     padding: 10px 30px;
   }
-  .menu-burger {
+  .site-header__burger {
     display: block;
   }
   .site-header__menu {
@@ -360,5 +358,10 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 8;
+  }
+
+  .site-header__list {
+    flex-direction: column;
+    align-items: center;
   }
 }

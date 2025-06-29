@@ -19,5 +19,5 @@
     </nav>
   </div>
 
-  <div class="material-symbols-outlined menu-burger" id="toggler">menu</div>
+  <div class="material-symbols-outlined site-header__burger" id="toggler">menu</div>
 </header>
