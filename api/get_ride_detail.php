@@ -17,7 +17,7 @@ $stmt = $pdo->prepare("SELECT trajets.*, users.pseudo, users.photo, users.note,
 $stmt->execute([$id]);
 $trajet = $stmt->fetch(PDO::FETCH_ASSOC);
 if ($trajet) {
-    $collection = $mongo->selectCollection($dbName, 'descriptions');
+    $collection = $mongo->selectCollection($dbName, 'users');
     $doc = $collection->findOne(['trajet_id' => $id]);
     $trajet['description'] = $doc['description'] ?? null;
     echo json_encode(['success'=>true,'trajet'=>$trajet]);

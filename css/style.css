@@ -230,24 +230,22 @@ main {
   text-decoration: none;
 }
 /*---------- 8. PAGE : rideDetail.php ----------*/
-.page-detail section {
-  display: inline-block;
-}
-.page-detail h1 {
+.page-ride-detail {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.page-detail {
-  text-align: center;
-  margin-bottom: 30px;
-}
-.detail-container {
+.ride-detail__section {
+  display: inline-block;
   margin: auto;
   padding: 20px;
 }
+.ride-detail__title {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-.trajet-detail-card {
+.ride-detail__card {
   display: flex;
   gap: 30px;
   background-color: #f9f9f9;
@@ -256,11 +254,11 @@ main {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.conducteur-info {
+.ride-detail__driver-info {
   text-align: center;
 }
 
-.conducteur-info .photo-profil {
+.ride-detail__profile-photo {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -268,19 +266,15 @@ main {
   margin-bottom: 10px;
 }
 
-.trajet-info p {
+.ride-detail__preferences {
+  margin-top: 30px;
+}
+
+.ride-detail__line {
   margin: 6px 0;
 }
 
-.preferences-info {
-  margin-top: 15px;
-}
-
-.preferences-info p {
-  margin: 4px 0;
-}
-
-.btn-retour {
+.ride-detail__back-button {
   display: inline-block;
   margin-top: 20px;
   text-decoration: none;
