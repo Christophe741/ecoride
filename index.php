@@ -6,11 +6,11 @@ $pageTitle = "EcoRide - Accueil";
 <html lang="fr">
 <?php require_once 'includes/head.php'; ?>
 
-<body class="home-page">
+<body class="page-home">
 
   <?php require_once 'includes/header.php'; ?>
 
-  <main class="home-page__main">
+  <main class="page-home__main">
 
     <?php require_once 'includes/search_section.php'; ?>
 
@@ -23,7 +23,7 @@ $pageTitle = "EcoRide - Accueil";
         </p>
       </div>
       <div class="hero__illustration">
-        <img src="assets/images/car.png" class="car-image" alt="Illustration d'une voiture écologique">
+        <img src="assets/images/car.png" class="hero__image" alt="Illustration d'une voiture écologique">
       </div>
     </section>
 

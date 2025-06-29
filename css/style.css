@@ -144,7 +144,7 @@ main {
 }
 
 /*---------- 6. PAGE : index.php ----------*/
-.home-page__main {
+.page-home__main {
   background: linear-gradient(180deg, #fff 78.37%, #2adb59 100%);
   position: relative;
 }
@@ -331,7 +331,7 @@ main {
   .form-search {
     flex-direction: column;
   }
-  .car-image {
+  .hero__image {
     position: static;
     margin-top: 20px;
     max-width: 200px;
