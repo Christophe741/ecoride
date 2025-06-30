@@ -322,7 +322,6 @@ main {
     background-color: #e5ffde;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     z-index: 8;
   }
   .header__list {
@@ -332,6 +331,34 @@ main {
 
   .header__burger {
     display: block;
+  }
+
+  .ride-card {
+    padding: 5px;
+  }
+  .ride-card__middle {
+    padding: 0 5px;
+  }
+  .ride-card p {
+    font-size: 12px;
+  }
+
+  .ride-card__button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  .ride-card__badge {
+    padding: 2px 4px;
+    font-size: 12px;
+  }
+  .ride-card__photo {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #ccc;
+    border: 1px solid #ccc;
+  }
+  .ride-results__section {
+    text-align: unset;
   }
 
   .footer {
