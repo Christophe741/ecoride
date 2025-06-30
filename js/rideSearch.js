@@ -59,7 +59,7 @@ function buildCard(trajet, query) {
 }
 
 domReady(() => {
-  const container = document.querySelector("#results");
+  const container = document.getElementById("results");
 
   const params = new URLSearchParams(window.location.search);
   const depart = params.get("depart");

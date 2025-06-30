@@ -79,7 +79,7 @@ function renderBackButton(container, from, to, date) {
 }
 
 domReady(() => {
-  const container = document.querySelector("#ride-detail");
+  const container = document.getElementById("ride-detail");
 
   const params = new URLSearchParams(window.location.search);
   const rideId = params.get("id");

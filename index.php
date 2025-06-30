@@ -14,7 +14,7 @@ $pageTitle = "EcoRide - Accueil";
 
     <?php require_once 'includes/search_section.php'; ?>
 
-    <section class="hero__section">
+    <section class="hero__content">
       <div>
         <h2 class="hero__title">Réinventons les trajets du quotidien</h2>
         <p>

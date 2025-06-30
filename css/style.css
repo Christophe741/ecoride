@@ -117,14 +117,14 @@ main {
   margin-bottom: 20px;
 }
 
-.form-search {
+.search-hero__form {
   display: flex;
   gap: 10px;
   max-width: 1100px;
   margin: auto;
 }
 
-.form-search__input {
+.search-hero__input {
   padding: 10px;
   border: none;
   border-radius: 8px;
@@ -132,7 +132,7 @@ main {
   flex: 1;
 }
 
-.form-search__button {
+.search-hero__button {
   background-color: #ffffff;
   color: #000000;
   font-weight: 400;
@@ -149,7 +149,7 @@ main {
   position: relative;
 }
 
-.hero__section {
+.hero__content {
   padding-top: 40px;
   text-align: center;
   display: flex;
@@ -199,7 +199,7 @@ main {
   flex: 1;
 }
 
-.ride-card__middle .ride-card__title {
+.ride-card__title {
   margin-bottom: 6px;
 }
 
@@ -210,7 +210,7 @@ main {
   gap: 10px;
 }
 
-.ride-card__right .ride-card__badge {
+.ride-card__badge {
   background-color: #32cd32;
   color: white;
   padding: 4px 8px;
@@ -218,7 +218,7 @@ main {
   font-size: 14px;
 }
 
-.ride-card__right .ride-card__button {
+.ride-card__button {
   background-color: #ace9e6;
   color: #000000;
   font-weight: 400;
@@ -235,7 +235,7 @@ main {
   margin-bottom: 30px;
 }
 
-.ride-detail__section {
+.ride-detail__content {
   display: inline-block;
   margin: auto;
   padding: 20px;
@@ -283,26 +283,27 @@ main {
 }
 
 /*---------- 9. PAGE : legal.php ----------*/
-.mentions-legales-container h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.mentions-legales-container {
+.legal-container {
   min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
-.mentions-legales-container section {
+.legal-container__title {
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+}
+
+.legal-container__content {
   max-width: 600px;
   margin-bottom: 30px;
 }
 
-.mentions-legales-container h3 {
-  text-align: center;
+.legal-container__subtitle {
+  font-size: 1.3rem;
   margin-bottom: 10px;
 }
 /*---------- 10. PAGES : contact.php et register.php ----------*/
@@ -333,7 +334,7 @@ main {
     display: block;
   }
 
-  footer {
+  .footer {
     flex-direction: column;
     align-items: center;
   }
@@ -343,8 +344,14 @@ main {
     right: auto;
   }
 
-  .form-search {
+  .search-hero__form {
     flex-direction: column;
+  }
+
+  .search-hero__button {
+    min-width: 200px;
+    align-self: center;
+    padding: 10px 30px;
   }
 
   .hero__illustration {
@@ -352,17 +359,12 @@ main {
     margin-top: 20px;
     transform: none;
   }
+
   .hero__image {
     max-width: 200px;
   }
 
   .footer__logo--hide-mobile {
     display: none;
-  }
-
-  .form-search__button {
-    min-width: 200px;
-    align-self: center;
-    padding: 10px 30px;
   }
 }

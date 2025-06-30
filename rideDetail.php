@@ -13,7 +13,7 @@ $pageTitle = "Ride Detail";
 <main class="ride-detail">
   <h1 class="ride-detail__title">Détail du trajet</h1>
   
-  <section class="ride-detail__section" id="ride-detail">
+  <section class="ride-detail__content" id="ride-detail">
   </section>
 </main>
 
