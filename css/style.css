@@ -62,7 +62,7 @@ main {
 }
 
 /*---------- 4. COMPONENT : header.php ----------*/
-.site-header {
+.header {
   background: linear-gradient(
     90deg,
     #7cd9a0 16.83%,
@@ -74,29 +74,29 @@ main {
   align-items: center;
 }
 
-.site-header__logo {
+.header__logo {
   color: #fff;
   font-size: 40px;
   font-weight: 600;
   text-decoration: none;
 }
 
-.site-header__logo--green {
+.header__logo--green {
   color: #205b3f;
 }
 
-.site-header__link {
+.header__link {
   color: #000000;
   text-decoration: none;
   font-weight: 600;
 }
 
-.site-header__list {
+.header__list {
   list-style: none;
   display: flex;
   gap: 15px;
 }
-.site-header__burger {
+.header__burger {
   display: none;
 }
 /*---------- 5. COMPONENT : search_section ----------*/
@@ -144,12 +144,12 @@ main {
 }
 
 /*---------- 6. PAGE : index.php ----------*/
-.page-home__main {
+.hero {
   background: linear-gradient(180deg, #fff 78.37%, #2adb59 100%);
   position: relative;
 }
 
-.hero {
+.hero__section {
   padding-top: 40px;
   text-align: center;
   display: flex;
@@ -230,7 +230,7 @@ main {
   text-decoration: none;
 }
 /*---------- 8. PAGE : rideDetail.php ----------*/
-.page-ride-detail {
+.ride-detail {
   text-align: center;
   margin-bottom: 30px;
 }
@@ -311,6 +311,28 @@ main {
 }
 /*---------- MEDIA QUERIES ----------*/
 @media (max-width: 768px) {
+  .header__menu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #e5ffde;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 8;
+  }
+  .header__list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header__burger {
+    display: block;
+  }
+
   footer {
     flex-direction: column;
     align-items: center;
@@ -342,26 +364,5 @@ main {
     min-width: 200px;
     align-self: center;
     padding: 10px 30px;
-  }
-  .site-header__burger {
-    display: block;
-  }
-  .site-header__menu {
-    display: none;
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #e5ffde;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 8;
-  }
-
-  .site-header__list {
-    flex-direction: column;
-    align-items: center;
   }
 }

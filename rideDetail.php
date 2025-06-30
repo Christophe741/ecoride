@@ -7,7 +7,7 @@ $pageTitle = "Ride Detail";
 <html lang="en">
 <?php require_once 'includes/head.php'; ?>
 
-<body class="page-ride-detail">
+<body>
 <?php require_once 'includes/header.php'; ?>
 
 <main class="ride-detail">

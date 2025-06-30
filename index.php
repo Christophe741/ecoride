@@ -6,16 +6,16 @@ $pageTitle = "EcoRide - Accueil";
 <html lang="fr">
 <?php require_once 'includes/head.php'; ?>
 
-<body class="page-home">
+<body>
 
   <?php require_once 'includes/header.php'; ?>
 
-  <main class="page-home__main">
+  <main class="hero">
 
     <?php require_once 'includes/search_section.php'; ?>
 
-    <section class="hero">
-      <div class="hero__content">
+    <section class="hero__section">
+      <div>
         <h2 class="hero__title">Réinventons les trajets du quotidien</h2>
         <p>
           EcoRide est une plateforme de covoiturage pensée pour ceux qui veulent bouger autrement.<br>

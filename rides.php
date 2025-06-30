@@ -7,11 +7,11 @@
 <html lang="fr">
 <?php require_once 'includes/head.php';?>
 
-<body class="page-rides">
+<body>
 <?php require_once 'includes/header.php'; ?>
 <?php require_once 'includes/search_section.php'; ?>
 
-<main class="ride-results">
+<main>
   <section class="ride-results__section">
     <h1 class="ride-results__title">Résultats de recherche</h1>
     <div id="results" class="ride-results__list"></div>
