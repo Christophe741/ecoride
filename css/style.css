@@ -173,6 +173,7 @@ main {
   text-align: center;
 }
 .ride-results__title {
+  text-align: center;
   font-size: 25px;
   margin-bottom: 20px;
 }
@@ -230,22 +231,14 @@ main {
   text-decoration: none;
 }
 /*---------- 8. PAGE : rideDetail.php ----------*/
-.ride-detail {
-  text-align: center;
-  margin-bottom: 30px;
-}
 
-.ride-detail__content {
-  display: inline-block;
-  margin: auto;
-  padding: 20px;
-}
 .ride-detail__title {
   text-align: center;
   margin-bottom: 30px;
 }
 
 .ride-detail__card {
+  margin: 0 auto;
   display: flex;
   gap: 30px;
   max-width: 800px;
@@ -276,13 +269,13 @@ main {
 }
 
 .ride-detail__back-button {
-  display: inline-block;
+  display: block;
+  text-align: center;
   margin-top: 20px;
   text-decoration: none;
   color: #2adb59;
   font-weight: bold;
 }
-
 /*---------- 9. PAGE : legal.php ----------*/
 .legal-container {
   min-height: 70vh;
@@ -341,7 +334,7 @@ main {
     padding: 0 5px;
   }
   .ride-card p {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .ride-card__button {
@@ -353,46 +346,61 @@ main {
     font-size: 12px;
   }
   .ride-card__photo {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border: 2px solid #ccc;
     border: 1px solid #ccc;
   }
   .ride-results__section {
+    padding: 20px;
     text-align: unset;
   }
-
-  .footer {
-    flex-direction: column;
-    align-items: center;
+  .ride-detail {
+    padding: 10px;
   }
+}
 
-  .footer__legal {
-    position: static;
-    right: auto;
-  }
+.ride-detail__card {
+  gap: 20px;
+}
+.ride-detail__profile-photo {
+  width: 70px;
+  height: 70px;
+}
 
-  .search-hero__form {
-    flex-direction: column;
-  }
+.ride-detail__username {
+  font-size: 1.2rem;
+}
+.footer {
+  flex-direction: column;
+  align-items: center;
+}
 
-  .search-hero__button {
-    min-width: 200px;
-    align-self: center;
-    padding: 10px 30px;
-  }
+.footer__legal {
+  position: static;
+  right: auto;
+}
 
-  .hero__illustration {
-    position: static;
-    margin-top: 20px;
-    transform: none;
-  }
+.search-hero__form {
+  flex-direction: column;
+}
 
-  .hero__image {
-    max-width: 200px;
-  }
+.search-hero__button {
+  min-width: 200px;
+  align-self: center;
+  padding: 10px 30px;
+}
 
-  .footer__logo--hide-mobile {
-    display: none;
-  }
+.hero__illustration {
+  position: static;
+  margin-top: 20px;
+  transform: none;
+}
+
+.hero__image {
+  max-width: 200px;
+}
+
+.footer__logo--hide-mobile {
+  display: none;
 }

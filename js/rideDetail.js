@@ -18,7 +18,7 @@ function renderRideDetail(t, container) {
         )}" alt="Photo de ${escapeHTML(
     t.pseudo
   )}" class="ride-detail__profile-photo">
-        <h2 class="ride-detail__line">${escapeHTML(t.pseudo)}</h2>
+        <h2 class="ride-detail__username">${escapeHTML(t.pseudo)}</h2>
         <p class="ride-detail__line">Note : ${escapeHTML(t.note)}/5</p>
       </div>
       <div class="ride-detail__info">
