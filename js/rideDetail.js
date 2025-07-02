@@ -37,6 +37,9 @@ function renderRideDetail(t, container) {
           hour: "2-digit",
           minute: "2-digit",
         })}</p>
+         <p class="ride-detail__line"><strong>Durée :</strong> ${escapeHTML(
+           t.duree.substring(0, 5)
+         )}</p>
         <p class="ride-detail__line"><strong>Prix :</strong> ${escapeHTML(
           t.prix
         )} €</p>
