@@ -1,6 +1,6 @@
 import { domReady } from "./domReady.js";
 
-function buildCard(trajet, query) {
+function buildCard(ride, query) {
   const card = document.createElement("div");
   card.className = "ride-card";
 
@@ -9,8 +9,8 @@ function buildCard(trajet, query) {
   left.className = "ride-card__left";
   const img = document.createElement("img");
   img.className = "ride-card__photo";
-  img.src = `assets/profils/${trajet.photo}`;
-  img.alt = `Photo de ${trajet.pseudo}`;
+  img.src = `assets/profils/${ride.photo}`;
+  img.alt = `Photo de ${ride.pseudo}`;
   left.appendChild(img);
 
   // Partie centrale : infos principales du trajet
@@ -18,25 +18,25 @@ function buildCard(trajet, query) {
   middle.className = "ride-card__middle";
   const title = document.createElement("h3");
   title.className = "ride-card__title";
-  title.textContent = trajet.pseudo;
+  title.textContent = ride.pseudo;
   middle.appendChild(title);
   const note = document.createElement("p");
   note.appendChild(document.createElement("strong")).textContent = "Note :";
-  note.append(` ${trajet.note} / 5`);
+  note.append(` ${ride.note} / 5`);
   const places = document.createElement("p");
   places.appendChild(document.createElement("strong")).textContent =
     "Places restantes :";
-  places.append(` ${trajet.places}`);
+  places.append(` ${ride.places}`);
   const prix = document.createElement("p");
   prix.appendChild(document.createElement("strong")).textContent = "Prix :";
-  prix.append(` ${trajet.prix} €`);
+  prix.append(` ${ride.prix} €`);
   const depart = document.createElement("p");
   depart.appendChild(document.createElement("strong")).textContent = "Départ :";
-  depart.append(` ${trajet.ville_depart}`);
+  depart.append(` ${ride.ville_depart}`);
   const arrivee = document.createElement("p");
   arrivee.appendChild(document.createElement("strong")).textContent =
     "Arrivée :";
-  arrivee.append(` ${trajet.ville_arrivee}`);
+  arrivee.append(` ${ride.ville_arrivee}`);
 
   middle.append(title, note, places, prix, depart, arrivee);
 
@@ -49,7 +49,7 @@ function buildCard(trajet, query) {
   const link = document.createElement("a");
   link.className = "ride-card__button";
   const params = new URLSearchParams(query);
-  params.set("id", trajet.id);
+  params.set("id", ride.id);
   link.href = `rideDetail.php?${params.toString()}`;
   link.textContent = "Détail";
   right.append(badge, link);
@@ -80,8 +80,8 @@ domReady(() => {
     .then((res) => res.json())
     .then((data) => {
       if (data.success && data.trajets.length) {
-        data.trajets.forEach((t) =>
-          container.appendChild(buildCard(t, { depart, arrivee, date }))
+        data.trajets.forEach((ride) =>
+          container.appendChild(buildCard(ride, { depart, arrivee, date }))
         );
       } else {
         container.textContent = "Aucun trajet trouvé pour cette recherche.";
