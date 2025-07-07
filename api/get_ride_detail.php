@@ -18,7 +18,7 @@ $stmt->execute([$id]);
 $trajet = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($trajet) {
-    $collection = $mongo->selectCollection($dbName, 'users');
+    $collection = $mongo->selectCollection($dbName, 'description');
 
     $conducteurId = $trajet['conducteur_id'] ?? null;
     if ($conducteurId) {
