@@ -277,6 +277,10 @@ main {
   color: #2adb59;
   font-weight: bold;
 }
+.ride-detail__error {
+  color: red;
+  text-align: center;
+}
 /*---------- 9. PAGE : legal.php ----------*/
 .legal-container {
   min-height: 70vh;
