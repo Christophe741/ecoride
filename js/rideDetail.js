@@ -91,7 +91,7 @@ domReady(() => {
   const date = params.get("date");
 
   if (!rideId) {
-    container.textContent = "Erreur : aucun trajet sélectionné.";
+    container.innerHTML = `<p class="ride-detail__error">Erreur : aucun trajet sélectionné.<p>`;
     return;
   }
 
@@ -99,7 +99,7 @@ domReady(() => {
     .then((res) => res.json())
     .then((data) => {
       if (!data.success) {
-        container.innerHTML = `<p>Trajet introuvable.</p>`;
+        container.innerHTML = `<p class="ride-detail__error">Trajet introuvable.</p>`;
         return;
       }
 
@@ -107,6 +107,6 @@ domReady(() => {
       renderBackButton(container, from, to, date);
     })
     .catch(() => {
-      container.innerHTML = `<p>Erreur lors du chargement du trajet.</p>`;
+      container.innerHTML = `<p class="ride-detail__error">Erreur lors du chargement du trajet.</p>`;
     });
 });
