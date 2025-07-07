@@ -18,15 +18,10 @@ $stmt->execute([$id]);
 $trajet = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($trajet) {
-    $collection = $mongo->selectCollection($dbName, 'description');
-
-    $conducteurId = $trajet['conducteur_id'] ?? null;
-    if ($conducteurId) {
-        $doc = $collection->findOne(['user_id' => $conducteurId]);
-        $trajet['description'] = $doc['description'] ?? null;
-    } else {
-        $trajet['description'] = null;
-    }
-
+    $collection = $mongo->selectCollection($dbName, 'trajets');
+    $doc = $collection->findOne(['trajet_id' => $id]);
+    $trajet['description'] = $doc['description'] ?? null;
     echo json_encode(['success' => true, 'trajet' => $trajet]);
+}else {
+    echo json_encode(['success'=>false,'message'=>'Trajet introuvable']);
 }
