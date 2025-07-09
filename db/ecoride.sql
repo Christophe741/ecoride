@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mer. 02 juil. 2025 à 18:38
+-- Généré le : mar. 08 juil. 2025 à 04:05
 -- Version du serveur : 10.4.34-MariaDB-1:10.4.34+maria~ubu2004
 -- Version de PHP : 8.2.27
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `preferences_utilisateur` (
   `utilisateur_id` int(11) NOT NULL,
-  `ambiance` enum('Je suis très bavard','Quand je suis en confiance, j’aime échanger','Je suis plutôt quelqu’un de réservé.') DEFAULT 'Quand je suis en confiance, j’aime échanger',
+  `ambiance` enum('Je suis très bavard','Quand je me sens à l’aise, j’aime discuter et partager','Je suis plutôt quelqu’un de réservé.') DEFAULT 'Quand je me sens à l’aise, j’aime discuter et partager',
   `musique` enum('De la musique du début à la fin !','Tout dépend du style musical','Rien ne vaut le silence') DEFAULT 'Tout dépend du style musical',
   `fumeur` enum('Fumer en voiture ne me dérange pas','Ok pour des pauses cigarette à l’extérieur','Merci de ne pas fumer') DEFAULT 'Ok pour des pauses cigarette à l’extérieur',
   `animaux` enum('Les animaux sont les bienvenus !','Voyager avec un animal, pourquoi pas selon le cas','Je préfère voyager sans animaux.') DEFAULT 'Voyager avec un animal, pourquoi pas selon le cas'
@@ -40,9 +40,8 @@ CREATE TABLE `preferences_utilisateur` (
 --
 
 INSERT INTO `preferences_utilisateur` (`utilisateur_id`, `ambiance`, `musique`, `fumeur`, `animaux`) VALUES
-(1, 'Quand je suis en confiance, j’aime échanger', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas'),
-(2, 'Quand je suis en confiance, j’aime échanger', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas'),
-(4, 'Quand je suis en confiance, j’aime échanger', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas');
+(1, 'Quand je me sens à l’aise, j’aime discuter et partager', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas'),
+(2, 'Quand je me sens à l’aise, j’aime discuter et partager', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas');
 
 -- --------------------------------------------------------
 
@@ -99,7 +98,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `role` enum('passager','conducteur','admin') NOT NULL DEFAULT 'passager',
   `credits` int(11) DEFAULT 20,
-  `note` decimal(10,0) DEFAULT 5,
+  `note` decimal(2,1) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT 1,
   `created_at` datetime DEFAULT current_timestamp(),
   `photo` varchar(255) DEFAULT 'default-profile.png'
@@ -110,12 +109,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `role`, `credits`, `note`, `is_active`, `created_at`, `photo`) VALUES
-(1, 'Sophie', 'Sophie@example.com', '$2y$12$iUFj6TRjUSCxGkiit637z.T/zmulPD2WzAZs55dUf/BsybzkcqMee', 'conducteur', 20, 5, 1, '2025-04-23 09:01:57', 'sophie.jpg'),
-(2, 'David', 'test@ecoride.com', '$2y$12$5G6Qt7zPGsuIj6/iZqS4fOeZwdG3W9fvbhdYfIbeyTyvOcDjjJyn.', 'conducteur', 30, 5, 1, '2025-04-30 16:11:55', 'david.jpg'),
-(3, 'admin', 'admin@ecoride.fr', '$2y$10$6x3/pH5sGZK2kpUO4U2RmenQHEFDpsBsQaoCODfJnqtnmBUeSEOH.', 'admin', 20, 5, 1, '2025-05-01 13:42:56', 'default-profile.png'),
-(4, 'antoine', 'test34@ecoride.com', '$2y$10$UGk62pznoKqa30/MG53OauzXPVBOV.rtmtKWWuw1goHUsSoey4di2', 'passager', 20, 5, 1, '2025-05-12 22:55:23', 'default-profile.png'),
-(5, 'Marc', 'marc@test.com', '$2y$10$beo6mlt524q9uDIajFVAPOKPp7UbdCZBhZ8pZJLATbXCEsSRybZEm', 'conducteur', 20, 5, 1, '2025-06-26 21:44:41', 'default-profile.png'),
-(7, 'henry', 'henry@test.com', '$2y$10$UGk62pznoKqa30/MG53OauzXPVBOV.rtmtKWWuw1goHUsSoey4di2', 'passager', 20, 5, 1, '2025-06-26 22:54:00', 'default-profile.png');
+(1, 'Sophie', 'Sophie@example.com', '$2y$12$iUFj6TRjUSCxGkiit637z.T/zmulPD2WzAZs55dUf/BsybzkcqMee', 'conducteur', 20, 4.0, 1, '2025-04-23 09:01:57', 'sophie.jpg'),
+(2, 'David', 'test@ecoride.com', '$2y$12$5G6Qt7zPGsuIj6/iZqS4fOeZwdG3W9fvbhdYfIbeyTyvOcDjjJyn.', 'conducteur', 30, 4.5, 1, '2025-04-30 16:11:55', 'david.jpg'),
+(3, 'admin', 'admin@ecoride.fr', '$2y$10$6x3/pH5sGZK2kpUO4U2RmenQHEFDpsBsQaoCODfJnqtnmBUeSEOH.', 'admin', 20, NULL, 1, '2025-05-01 13:42:56', 'default-profile.png'),
+(4, 'antoine', 'test34@ecoride.com', '$2y$10$UGk62pznoKqa30/MG53OauzXPVBOV.rtmtKWWuw1goHUsSoey4di2', 'passager', 20, 3.8, 1, '2025-05-12 22:55:23', 'default-profile.png'),
+(5, 'Marc', 'marc@test.com', '$2y$10$beo6mlt524q9uDIajFVAPOKPp7UbdCZBhZ8pZJLATbXCEsSRybZEm', 'conducteur', 20, 2.8, 1, '2025-06-26 21:44:41', 'default-profile.png'),
+(7, 'henry', 'henry@test.com', '$2y$10$UGk62pznoKqa30/MG53OauzXPVBOV.rtmtKWWuw1goHUsSoey4di2', 'passager', 20, 5.0, 1, '2025-06-26 22:54:00', 'default-profile.png');
 
 -- --------------------------------------------------------
 

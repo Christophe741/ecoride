@@ -241,8 +241,9 @@ main {
 .ride-detail__card {
   margin: 0 auto;
   display: flex;
-  gap: 30px;
+  width: fit-content;
   max-width: 800px;
+  gap: 30px;
   background-color: #f9f9f9;
   padding: 25px;
   border-radius: 12px;
@@ -251,6 +252,9 @@ main {
 
 .ride-detail__driver-info {
   text-align: center;
+}
+.ride-detail__info {
+  margin: auto 0;
 }
 
 .ride-detail__profile-photo {
@@ -262,6 +266,7 @@ main {
 }
 
 .ride-detail__preferences {
+  text-align: left;
   margin-top: 30px;
 }
 

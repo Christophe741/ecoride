@@ -1,72 +1,81 @@
 import { domReady } from "./domReady.js";
 
-function escapeHTML(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+function buildLine(key, value) {
+  const p = document.createElement("p");
+  p.className = "ride-detail__line";
+  if (key) {
+    const strong = document.createElement("strong");
+    strong.textContent = key;
+    p.appendChild(strong);
+    p.append(` ${value}`);
+  } else {
+    p.textContent = value;
+  }
+  return p;
 }
 
-function renderRideDetail(t, container) {
-  container.innerHTML = `
-    <div class="ride-detail__card">
-      <div class="ride-detail__driver-info">
-        <img src="assets/profils/${escapeHTML(
-          t.photo
-        )}" alt="Photo de ${escapeHTML(
-    t.pseudo
-  )}" class="ride-detail__profile-photo">
-        <h2 class="ride-detail__username">${escapeHTML(t.pseudo)}</h2>
-        <p class="ride-detail__line">Note : ${escapeHTML(t.note)}/5</p>
-      </div>
-      <div class="ride-detail__info">
-        <p class="ride-detail__line"><strong>Départ :</strong> ${escapeHTML(
-          t.ville_depart
-        )}</p>
-        <p class="ride-detail__line"><strong>Arrivée :</strong> ${escapeHTML(
-          t.ville_arrivee
-        )}</p>
-        <p class="ride-detail__line"><strong>Date et heure :</strong> ${new Date(
-          t.date_depart
-        ).toLocaleString("fr-FR", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-        })}</p>
-         <p class="ride-detail__line"><strong>Durée :</strong> ${escapeHTML(
-           t.duree.substring(0, 5)
-         )}</p>
-        <p class="ride-detail__line"><strong>Prix :</strong> ${escapeHTML(
-          t.prix
-        )} €</p>
-        <p class="ride-detail__line"><strong>Places disponibles :</strong> ${escapeHTML(
-          t.places
-        )}</p>
-        <p class="ride-detail__line"><strong>Description :</strong> <span id="description-text">${escapeHTML(
-          t.description || "Aucune description"
-        )}</span></p>
-        <div class="ride-detail__preferences">
-          <p class="ride-detail__line"><strong>Ambiance :</strong> ${escapeHTML(
-            t.ambiance
-          )}</p>
-          <p class="ride-detail__line"><strong>Musique :</strong> ${escapeHTML(
-            t.musique
-          )}</p>
-          <p class="ride-detail__line"><strong>Fumeur :</strong> ${escapeHTML(
-            t.fumeur
-          )}</p>
-          <p class="ride-detail__line"><strong>Animaux :</strong> ${escapeHTML(
-            t.animaux
-          )}</p>
-        </div>
-        <div id="avis-section"></div>
-      </div>
-    </div>
-  `;
+function renderRideDetail(ride, container) {
+  const card = document.createElement("div");
+  card.className = "ride-detail__card";
+
+  const driver = document.createElement("div");
+  driver.className = "ride-detail__driver-info";
+
+  const img = document.createElement("img");
+  img.className = "ride-detail__profile-photo";
+  img.src = `assets/profils/${ride.photo}`;
+  img.alt = `Photo de ${ride.pseudo}`;
+
+  const username = document.createElement("h2");
+  username.className = "ride-detail__username";
+  username.textContent = ride.pseudo;
+
+  const note = buildLine(null, `Note : ${ride.note}/5`);
+
+  const prefs = document.createElement("div");
+  prefs.className = "ride-detail__preferences";
+  prefs.append(
+    buildLine("Ambiance :", ride.ambiance),
+    buildLine("Musique :", ride.musique),
+    buildLine("Fumeur :", ride.fumeur),
+    buildLine("Animaux :", ride.animaux)
+  );
+
+  driver.append(img, username, note, prefs);
+
+  const info = document.createElement("div");
+  info.className = "ride-detail__info";
+
+  info.append(
+    buildLine("Départ :", ride.ville_depart),
+    buildLine("Arrivée :", ride.ville_arrivee),
+    buildLine(
+      "Date et heure :",
+      new Date(ride.date_depart).toLocaleString("fr-FR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    ),
+    buildLine("Durée :", ride.duree.substring(0, 5)),
+    buildLine("Prix :", `${ride.prix} €`),
+    buildLine("Places disponibles :", ride.places)
+  );
+
+  const desc = document.createElement("p");
+  desc.className = "ride-detail__line";
+  const strongDesc = document.createElement("strong");
+  strongDesc.textContent = "Description :";
+  const descSpan = document.createElement("span");
+  descSpan.id = "description-text";
+  descSpan.textContent = ride.description || "Aucune description";
+  desc.append(strongDesc, " ", descSpan);
+  info.appendChild(desc);
+
+  card.append(driver, info);
+  container.appendChild(card);
 }
 
 function renderBackButton(container, from, to, date) {
