@@ -8,6 +8,7 @@ if (!$id) {
     echo json_encode(['success'=>false,'message'=>'Id manquant']);
     exit;
 }
+
 $stmt = $pdo->prepare("SELECT trajets.*, users.pseudo, users.photo, users.note,
                               prefs.ambiance, prefs.musique, prefs.fumeur, prefs.animaux
                        FROM trajets
@@ -21,7 +22,23 @@ if ($trajet) {
     $collection = $mongo->selectCollection($dbName, 'trajets');
     $doc = $collection->findOne(['trajet_id' => $id]);
     $trajet['description'] = $doc['description'] ?? null;
+    if (is_null($trajet['description'])) {
+        unset($trajet['description']);
+    }
+
+    $preferences = [];
+    foreach ($trajet as $champ => $valeur) {
+        if (!empty($valeur) && in_array($champ, ['ambiance', 'musique', 'fumeur', 'animaux'])) {
+            $preferences[] = [
+                'key' => $champ,
+                'value' => $valeur
+            ];
+            unset($trajet[$champ]);
+        }
+    }
+    $trajet['preferences'] = $preferences;
+
     echo json_encode(['success' => true, 'trajet' => $trajet]);
-}else {
+} else {
     echo json_encode(['success'=>false,'message'=>'Trajet introuvable']);
 }

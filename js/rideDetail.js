@@ -34,12 +34,11 @@ function renderRideDetail(ride, container) {
 
   const prefs = document.createElement("div");
   prefs.className = "ride-detail__preferences";
-  prefs.append(
-    buildLine("Ambiance :", ride.ambiance),
-    buildLine("Musique :", ride.musique),
-    buildLine("Fumeur :", ride.fumeur),
-    buildLine("Animaux :", ride.animaux)
-  );
+  if (Array.isArray(ride.preferences)) {
+    ride.preferences.forEach((pref) => {
+      prefs.appendChild(buildLine(pref.key + " :", pref.value));
+    });
+  }
 
   driver.append(img, username, note, prefs);
 
@@ -64,15 +63,9 @@ function renderRideDetail(ride, container) {
     buildLine("Places disponibles :", ride.places)
   );
 
-  const desc = document.createElement("p");
-  desc.className = "ride-detail__line";
-  const strongDesc = document.createElement("strong");
-  strongDesc.textContent = "Description :";
-  const descSpan = document.createElement("span");
-  descSpan.id = "description-text";
-  descSpan.textContent = ride.description || "Aucune description";
-  desc.append(strongDesc, " ", descSpan);
-  info.appendChild(desc);
+  if (ride.description) {
+    info.append(buildLine("Description :", ride.description));
+  }
 
   card.append(driver, info);
   container.appendChild(card);
