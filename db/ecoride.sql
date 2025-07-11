@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mar. 08 juil. 2025 à 04:05
+-- Généré le : ven. 11 juil. 2025 à 00:24
 -- Version du serveur : 10.4.34-MariaDB-1:10.4.34+maria~ubu2004
 -- Version de PHP : 8.2.27
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `preferences_utilisateur` (
   `utilisateur_id` int(11) NOT NULL,
-  `ambiance` enum('Je suis très bavard','Quand je me sens à l’aise, j’aime discuter et partager','Je suis plutôt quelqu’un de réservé.') DEFAULT 'Quand je me sens à l’aise, j’aime discuter et partager',
-  `musique` enum('De la musique du début à la fin !','Tout dépend du style musical','Rien ne vaut le silence') DEFAULT 'Tout dépend du style musical',
-  `fumeur` enum('Fumer en voiture ne me dérange pas','Ok pour des pauses cigarette à l’extérieur','Merci de ne pas fumer') DEFAULT 'Ok pour des pauses cigarette à l’extérieur',
-  `animaux` enum('Les animaux sont les bienvenus !','Voyager avec un animal, pourquoi pas selon le cas','Je préfère voyager sans animaux.') DEFAULT 'Voyager avec un animal, pourquoi pas selon le cas'
+  `ambiance` enum('Je suis très bavard','Quand je me sens à l’aise, j’aime discuter et partager','Je suis plutôt quelqu’un de réservé.') DEFAULT NULL,
+  `musique` enum('De la musique du début à la fin !','Tout dépend du style musical','Rien ne vaut le silence') DEFAULT NULL,
+  `fumeur` enum('Fumer en voiture ne me dérange pas','Ok pour des pauses cigarette à l’extérieur','Merci de ne pas fumer') DEFAULT NULL,
+  `animaux` enum('Les animaux sont les bienvenus !','Voyager avec un animal, pourquoi pas selon le cas','Je préfère voyager sans animaux.') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -41,7 +41,8 @@ CREATE TABLE `preferences_utilisateur` (
 
 INSERT INTO `preferences_utilisateur` (`utilisateur_id`, `ambiance`, `musique`, `fumeur`, `animaux`) VALUES
 (1, 'Quand je me sens à l’aise, j’aime discuter et partager', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas'),
-(2, 'Quand je me sens à l’aise, j’aime discuter et partager', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas');
+(2, 'Quand je me sens à l’aise, j’aime discuter et partager', 'Tout dépend du style musical', 'Ok pour des pauses cigarette à l’extérieur', 'Voyager avec un animal, pourquoi pas selon le cas'),
+(5, NULL, 'Tout dépend du style musical', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,6 @@ CREATE TABLE `vehicules` (
   `user_id` int(11) NOT NULL,
   `marque` varchar(50) DEFAULT NULL,
   `modele` varchar(50) DEFAULT NULL,
-  `couleur` varchar(30) DEFAULT NULL,
   `type_energie` enum('essence','diesel','électrique') NOT NULL,
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -136,10 +136,10 @@ CREATE TABLE `vehicules` (
 -- Déchargement des données de la table `vehicules`
 --
 
-INSERT INTO `vehicules` (`id`, `user_id`, `marque`, `modele`, `couleur`, `type_energie`, `created_at`) VALUES
-(1, 1, 'Renault', 'Clio V', 'Rouge', 'essence', '2025-04-30 15:48:51'),
-(2, 2, 'Volkswagen', 'Golf 8', 'Gris', 'diesel', '2025-04-30 16:11:55'),
-(3, 5, 'Peugeot', '208', 'Bleu', 'essence', '2025-07-02 18:33:21');
+INSERT INTO `vehicules` (`id`, `user_id`, `marque`, `modele`, `type_energie`, `created_at`) VALUES
+(1, 1, 'Renault', 'Clio V', 'essence', '2025-04-30 15:48:51'),
+(2, 2, 'Volkswagen', 'Golf 8', 'diesel', '2025-04-30 16:11:55'),
+(3, 7, 'Peugeot', '208', 'essence', '2025-07-02 18:33:21');
 
 --
 -- Index pour les tables déchargées
