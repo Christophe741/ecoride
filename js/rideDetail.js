@@ -62,7 +62,16 @@ function renderRideDetail(ride, container) {
     buildLine("Prix :", `${ride.prix} €`),
     buildLine("Places disponibles :", ride.places)
   );
-
+  if (ride.vehicule) {
+    if (
+      ride.vehicule.marque ||
+      ride.vehicule.modele ||
+      ride.vehicule.type_energie
+    ) {
+      const veh = `${ride.vehicule.marque} ${ride.vehicule.modele} ${ride.vehicule.type_energie}`;
+      info.appendChild(buildLine("Véhicule :", veh));
+    }
+  }
   if (ride.description) {
     info.append(buildLine("Description :", ride.description));
   }
