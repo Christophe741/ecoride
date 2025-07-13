@@ -21,8 +21,8 @@ $stmt->execute([$id]);
 $ride = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($ride) {
-    $collection = $mongo->selectCollection($dbName, 'trajets');
-    $doc = $collection->findOne(['trajet_id' => $id]);
+    $collection = $mongo->selectCollection($dbName, 'rides');
+    $doc = $collection->findOne(['ride_id' => $id]);
     $ride['description'] = $doc['description'] ?? null;
     if (is_null($ride['description'])) {
         unset($ride['description']);
