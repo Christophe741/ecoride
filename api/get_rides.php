@@ -3,11 +3,11 @@ require_once '../db/config.php';
 
 header('Content-Type: application/json');
 
-$depart = $_GET['departure_city'] ?? '';
-$arrivee = $_GET['arrival_city'] ?? '';
-$date = $_GET['departure_time'] ?? '';
+$departureCity = $_GET['departure_city'] ?? '';
+$arrivalCity = $_GET['arrival_city'] ?? '';
+$departureDate = $_GET['departure_time'] ?? '';
 
-if ($depart && $arrivee && $date) {
+if ($departureCity && $arrivalCity && $departureDate) {
     $stmt = $pdo->prepare("SELECT rides.id, rides.seats, rides.price, rides.departure_city, rides.arrival_city, users.username, users.rating, users.photo
                            FROM rides
                            JOIN users ON rides.driver_id = users.id
@@ -16,7 +16,7 @@ if ($depart && $arrivee && $date) {
                              AND arrival_city LIKE ?
                              AND DATE(departure_time) = ?
                            ORDER BY departure_time ASC");
-    $stmt->execute(["%$depart%", "%$arrivee%", $date]);
+    $stmt->execute(["%$departureCity%", "%$arrivalCity%", $departureDate]);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode(['success' => true, 'rides' => $results]);
 } else {
