@@ -64,7 +64,7 @@ function renderRideDetail(ride, container) {
   );
   if (ride.vehicle) {
     if (ride.vehicle.brand || ride.vehicle.model || ride.vehicle.fuel_type) {
-      const veh = `${ride.vehicle.brandt} ${ride.vehicle.model} ${ride.vehicle.fuel_type}`;
+      const veh = `${ride.vehicle.brand} ${ride.vehicle.model} ${ride.vehicle.fuel_type}`;
       info.appendChild(buildLine("Véhicule :", veh));
     }
   }

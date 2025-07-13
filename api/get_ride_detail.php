@@ -40,9 +40,9 @@ if ($ride) {
     }
     $ride['preferences'] = $preferences;
      $vehicule = [
-        'marque' => $ride['brand'] ?? null,
-        'modele' => $ride['model'] ?? null,
-        'type_energie' => $ride['fuel_type'] ?? null
+        'brand' => $ride['brand'] ?? null,
+        'model' => $ride['model'] ?? null,
+        'fuel_type' => $ride['fuel_type'] ?? null
     ];
     foreach (['brand', 'model', 'fuel_type'] as $field) {
         unset($ride[$field]);
