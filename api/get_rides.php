@@ -3,22 +3,22 @@ require_once '../db/config.php';
 
 header('Content-Type: application/json');
 
-$depart = $_GET['depart'] ?? '';
-$arrivee = $_GET['arrivee'] ?? '';
-$date = $_GET['date'] ?? '';
+$depart = $_GET['departure_city'] ?? '';
+$arrivee = $_GET['arrival_city'] ?? '';
+$date = $_GET['departure_time'] ?? '';
 
 if ($depart && $arrivee && $date) {
-    $stmt = $pdo->prepare("SELECT trajets.id, trajets.places, trajets.prix, trajets.ville_depart, trajets.ville_arrivee, users.pseudo, users.note, users.photo
-                           FROM trajets
-                           JOIN users ON trajets.conducteur_id = users.id
+    $stmt = $pdo->prepare("SELECT rides.id, rides.seats, rides.price, rides.departure_city, rides.arrival_city, users.username, users.rating, users.photo
+                           FROM rides
+                           JOIN users ON rides.driver_id = users.id
                            WHERE users.role = 'conducteur'
-                             AND ville_depart LIKE ?
-                             AND ville_arrivee LIKE ?
-                             AND DATE(date_depart) = ?
-                           ORDER BY date_depart ASC");
+                             AND departure_city LIKE ?
+                             AND arrival_city LIKE ?
+                             AND DATE(departure_time) = ?
+                           ORDER BY departure_time ASC");
     $stmt->execute(["%$depart%", "%$arrivee%", $date]);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode(['success' => true, 'trajets' => $results]);
+    echo json_encode(['success' => true, 'rides' => $results]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Parametres manquants']);
 }

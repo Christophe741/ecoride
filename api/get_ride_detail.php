@@ -9,14 +9,14 @@ if (!$id) {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT trajets.*, users.pseudo, users.photo, users.note,
-                               prefs.ambiance, prefs.musique, prefs.fumeur, prefs.animaux,
-                              v.marque, v.modele, v.type_energie
-                       FROM trajets
-                       JOIN users ON trajets.conducteur_id = users.id
-                       LEFT JOIN preferences_utilisateur AS prefs ON prefs.utilisateur_id = users.id
-                       LEFT JOIN vehicules AS v ON v.id = trajets.vehicule_id
-                       WHERE trajets.id = ? AND users.role = 'conducteur'");
+$stmt = $pdo->prepare("SELECT rides.*, users.username, users.photo, users.rating,
+                               prefs.chatty_level, prefs.music_taste, prefs.smoker, prefs.pets,
+                              v.brand, v.model, v.fuel_type
+                       FROM rides
+                       JOIN users ON rides.driver_id = users.id
+                       LEFT JOIN user_preferences AS prefs ON prefs.user_id = users.id
+                       LEFT JOIN vehicles AS v ON v.id = rides.vehicle_id
+                       WHERE rides.id = ? AND users.role = 'conducteur'");
 $stmt->execute([$id]);
 $trajet = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -40,16 +40,16 @@ if ($trajet) {
     }
     $trajet['preferences'] = $preferences;
      $vehicule = [
-        'marque' => $trajet['marque'] ?? null,
-        'modele' => $trajet['modele'] ?? null,
-        'type_energie' => $trajet['type_energie'] ?? null
+        'marque' => $trajet['brand'] ?? null,
+        'modele' => $trajet['model'] ?? null,
+        'type_energie' => $trajet['fuel_type'] ?? null
     ];
-    foreach (['marque', 'modele', 'type_energie'] as $champ) {
+    foreach (['brand', 'model', 'fuel_type'] as $champ) {
         unset($trajet[$champ]);
     }
-    $trajet['vehicule'] = $vehicule;
+    $trajet['vehicle'] = $vehicule;
 
-    echo json_encode(['success' => true, 'trajet' => $trajet]);
+    echo json_encode(['success' => true, 'ride' => $trajet]);
 } else {
     echo json_encode(['success'=>false,'message'=>'Trajet introuvable']);
 }

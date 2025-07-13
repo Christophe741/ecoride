@@ -24,13 +24,13 @@ function renderRideDetail(ride, container) {
   const img = document.createElement("img");
   img.className = "ride-detail__profile-photo";
   img.src = `assets/profils/${ride.photo}`;
-  img.alt = `Photo de ${ride.pseudo}`;
+  img.alt = `Photo de ${ride.username}`;
 
   const username = document.createElement("h2");
   username.className = "ride-detail__username";
-  username.textContent = ride.pseudo;
+  username.textContent = ride.username;
 
-  const note = buildLine(null, `Note : ${ride.note}/5`);
+  const note = buildLine(null, `Note : ${ride.rating}/5`);
 
   const prefs = document.createElement("div");
   prefs.className = "ride-detail__preferences";
@@ -46,11 +46,11 @@ function renderRideDetail(ride, container) {
   info.className = "ride-detail__info";
 
   info.append(
-    buildLine("Départ :", ride.ville_depart),
-    buildLine("Arrivée :", ride.ville_arrivee),
+    buildLine("Départ :", ride.departure_city),
+    buildLine("Arrivée :", ride.arrival_city),
     buildLine(
       "Date et heure :",
-      new Date(ride.date_depart).toLocaleString("fr-FR", {
+      new Date(ride.departure_time).toLocaleString("fr-FR", {
         day: "2-digit",
         month: "2-digit",
         year: "numeric",
@@ -58,17 +58,13 @@ function renderRideDetail(ride, container) {
         minute: "2-digit",
       })
     ),
-    buildLine("Durée :", ride.duree.substring(0, 5)),
-    buildLine("Prix :", `${ride.prix} €`),
-    buildLine("Places disponibles :", ride.places)
+    buildLine("Durée :", ride.duration.substring(0, 5)),
+    buildLine("Prix :", `${ride.price} €`),
+    buildLine("Places disponibles :", ride.seats)
   );
-  if (ride.vehicule) {
-    if (
-      ride.vehicule.marque ||
-      ride.vehicule.modele ||
-      ride.vehicule.type_energie
-    ) {
-      const veh = `${ride.vehicule.marque} ${ride.vehicule.modele} ${ride.vehicule.type_energie}`;
+  if (ride.vehicle) {
+    if (ride.vehicle.brand || ride.vehicle.model || ride.vehicle.fuel_type) {
+      const veh = `${ride.vehicle.brandt} ${ride.vehicle.model} ${ride.vehicle.fuel_type}`;
       info.appendChild(buildLine("Véhicule :", veh));
     }
   }
@@ -82,11 +78,11 @@ function renderRideDetail(ride, container) {
 
 function renderBackButton(container, from, to, date) {
   const link = document.createElement("a");
-  link.href = `rides.php?depart=${encodeURIComponent(
+  link.href = `rides.php?departure_city=${encodeURIComponent(
     from || ""
-  )}&arrivee=${encodeURIComponent(to || "")}&date=${encodeURIComponent(
-    date || ""
-  )}`;
+  )}&arrival_city=${encodeURIComponent(
+    to || ""
+  )}&departure_time=${encodeURIComponent(date || "")}`;
   link.className = "ride-detail__back-button";
   link.textContent = "← Retour aux résultats";
   container.appendChild(link);
@@ -97,9 +93,9 @@ domReady(() => {
 
   const params = new URLSearchParams(window.location.search);
   const rideId = params.get("id");
-  const from = params.get("depart");
-  const to = params.get("arrivee");
-  const date = params.get("date");
+  const from = params.get("departure_city");
+  const to = params.get("arrival_city");
+  const date = params.get("departure_time");
 
   if (!rideId) {
     container.innerHTML = `<p class="ride-detail__error">Erreur : aucun trajet sélectionné.<p>`;
@@ -114,7 +110,7 @@ domReady(() => {
         return;
       }
 
-      renderRideDetail(data.trajet, container);
+      renderRideDetail(data.ride, container);
       renderBackButton(container, from, to, date);
     })
     .catch(() => {
