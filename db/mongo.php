@@ -1,10 +1,8 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$mongoUri = getenv('MONGO_URI');
-if (!$mongoUri) {
-    $mongoUri = 'mongodb://mongo:27017';   
-}
+$mongoUri = getenv('MONGO_URI') ?: die('Erreur : MONGO_URI non défini.');
+
 try {
     $mongo = new MongoDB\Client($mongoUri);
 } catch (Exception $e) {
