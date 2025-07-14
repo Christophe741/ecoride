@@ -1,6 +1,12 @@
 <?php
-$envFile = __DIR__ . '/../.env';
-if (file_exists($envFile)) {
+$envLocalPath = __DIR__ . '/../.env.local';
+$envPath      = __DIR__ . '/../.env';
+
+$envFile = (file_exists($envLocalPath) && filesize($envLocalPath) > 0)
+    ? $envLocalPath
+    : $envPath;
+
+    if (file_exists($envFile)) {
     $lines = file($envFile);
     foreach ($lines as $line) {  
         $line = trim($line);

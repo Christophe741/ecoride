@@ -3,8 +3,6 @@ require_once '../db/config.php';
 require_once '../db/mongo.php';
 header('Content-Type: application/json');
 
-$_GET['id']=4;
-
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 if (!$id) {
     echo json_encode(['success'=>false,'message'=>'Id manquant']);

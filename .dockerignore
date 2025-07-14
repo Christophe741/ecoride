@@ -3,3 +3,4 @@
 .env
 Mockups/
 *.md
+.env.local
