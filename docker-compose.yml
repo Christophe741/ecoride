@@ -6,8 +6,6 @@ services:
     volumes:
       - .:/var/www/html
       - /dev/null:/var/www/html/.env.local
-    environment:
-      DB_HOST: localhost
     depends_on:
       - db
       - mongo
