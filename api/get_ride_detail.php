@@ -3,6 +3,8 @@ require_once '../db/config.php';
 require_once '../db/mongo.php';
 header('Content-Type: application/json');
 
+$_GET['id']=4;
+
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 if (!$id) {
     echo json_encode(['success'=>false,'message'=>'Id manquant']);
@@ -28,18 +30,27 @@ if ($ride) {
         unset($ride['description']);
     }
 
+    
+    $labels = [
+    'chatty_level' => 'Ambiance',
+    'music_taste'  => 'Musique',
+    'smoker'       => 'Fumeur',
+    'pets'         => 'Animaux',
+     ];
+    
     $preferences = [];
     foreach ($ride as $field => $value) {
-        if (!empty($value) && in_array($field, ['ambiance', 'musique', 'fumeur', 'animaux'])) {
+        if (!empty($value) && isset($labels[$field])) {
             $preferences[] = [
-                'key' => $field,
+                'key' => $labels[$field],
                 'value' => $value
             ];
             unset($ride[$field]);
         }
     }
     $ride['preferences'] = $preferences;
-     $vehicule = [
+    
+    $vehicule = [
         'brand' => $ride['brand'] ?? null,
         'model' => $ride['model'] ?? null,
         'fuel_type' => $ride['fuel_type'] ?? null
