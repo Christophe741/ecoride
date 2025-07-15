@@ -24,9 +24,6 @@ services:
     image: phpmyadmin/phpmyadmin
     ports:
       - "8081:80"
-    environment:
-      PMA_HOST: ${DB_HOST}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     depends_on:
       - db
   mongo:
