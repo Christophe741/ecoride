@@ -23,7 +23,7 @@ function renderRideDetail(ride, container) {
 
   const img = document.createElement("img");
   img.className = "ride-detail__profile-photo";
-  img.src = `assets/profils/${ride.photo}`;
+  img.src = `assets/profile-pictures/${ride.photo}`;
   img.alt = `Photo de ${ride.username}`;
 
   const username = document.createElement("h2");

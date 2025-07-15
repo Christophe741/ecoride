@@ -9,7 +9,7 @@ function buildCard(ride, query) {
   left.className = "ride-card__left";
   const img = document.createElement("img");
   img.className = "ride-card__photo";
-  img.src = `assets/profils/${ride.photo}`;
+  img.src = `assets/profile-pictures/${ride.photo}`;
   img.alt = `Photo de ${ride.username}`;
   left.appendChild(img);
 
