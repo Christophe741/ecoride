@@ -50,9 +50,9 @@ function buildCard(ride, query) {
   const link = document.createElement("a");
   link.className = "ride-card__button";
   const params = new URLSearchParams();
-  if (query.departure_city) params.set("from", query.departure_city);
-  if (query.arrival_city) params.set("to", query.arrival_city);
-  if (query.departure_time) params.set("date", query.departure_time);
+  params.set("from", query.departure_city);
+  params.set("to", query.arrival_city);
+  params.set("date", query.departure_time);
   params.set("id", ride.id);
   link.href = `ride.php?${params.toString()}`;
   link.textContent = "Détail";
