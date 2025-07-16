@@ -5,7 +5,7 @@
   <div class="header__menu">
     <nav>
       <ul class="header__list">
-        <li><a href="rides.php" class="header__link">Covoiturage</a></li>
+        <li><a href="search.php" class="header__link">Covoiturage</a></li>
         
         <?php if (!isset($_SESSION['role'])): ?>
           <li><a href="register.php" class="header__link">Créer un compte</a></li>
