@@ -76,15 +76,15 @@ function renderRideDetail(ride, container) {
   container.appendChild(card);
 }
 
-function renderBackButton(container, from, to, date) {
+function renderBackButton(container) {
+  const params = new URLSearchParams(window.location.search);
+  params.delete("id");
+
   const link = document.createElement("a");
-  link.href = `rides.php?departure_city=${encodeURIComponent(
-    from || ""
-  )}&arrival_city=${encodeURIComponent(
-    to || ""
-  )}&departure_time=${encodeURIComponent(date || "")}`;
+  link.href = `search.php?${params.toString()}`;
   link.className = "ride-detail__back-button";
   link.textContent = "← Retour aux résultats";
+
   container.appendChild(link);
 }
 
@@ -93,12 +93,9 @@ domReady(() => {
 
   const params = new URLSearchParams(window.location.search);
   const rideId = params.get("id");
-  const from = params.get("departure_city");
-  const to = params.get("arrival_city");
-  const date = params.get("departure_time");
 
   if (!rideId) {
-    container.innerHTML = `<p class="ride-detail__error">Erreur : aucun trajet sélectionné.<p>`;
+    container.innerHTML = `<p class="ride-detail__error">Erreur : aucun trajet sélectionné.</p>`;
     return;
   }
 
@@ -111,7 +108,7 @@ domReady(() => {
       }
 
       renderRideDetail(data.ride, container);
-      renderBackButton(container, from, to, date);
+      renderBackButton(container);
     })
     .catch(() => {
       container.innerHTML = `<p class="ride-detail__error">Erreur lors du chargement du trajet.</p>`;
