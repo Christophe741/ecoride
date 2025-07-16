@@ -63,9 +63,9 @@ domReady(() => {
   const container = document.getElementById("results");
 
   const params = new URLSearchParams(window.location.search);
-  const departure_city = params.get("departure_city");
-  const arrival_city = params.get("arrival_city");
-  const departure_time = params.get("departure_time");
+  const departure_city = params.get("from");
+  const arrival_city = params.get("to");
+  const departure_time = params.get("date");
 
   if (!(departure_city && arrival_city && departure_time)) {
     container.textContent =
@@ -74,11 +74,11 @@ domReady(() => {
   }
 
   fetch(
-    `api/get_rides.php?departure_city=${encodeURIComponent(
+    `api/get_rides.php?from=${encodeURIComponent(
       departure_city
-    )}&arrival_city=${encodeURIComponent(
-      arrival_city
-    )}&departure_time=${encodeURIComponent(departure_time)}`
+    )}&to=${encodeURIComponent(arrival_city)}&date=${encodeURIComponent(
+      departure_time
+    )}`
   )
     .then((res) => res.json())
     .then((data) => {

@@ -3,9 +3,9 @@ require_once '../db/config.php';
 
 header('Content-Type: application/json');
 
-$departureCity = $_GET['departure_city'] ?? '';
-$arrivalCity = $_GET['arrival_city'] ?? '';
-$departureDate = $_GET['departure_time'] ?? '';
+$departureCity = $_GET['from'] ?? '';
+$arrivalCity = $_GET['to'] ?? '';
+$departureDate = $_GET['date'] ?? '';
 
 if ($departureCity && $arrivalCity && $departureDate) {
     $stmt = $pdo->prepare("SELECT rides.id, rides.seats, rides.price, rides.departure_city, rides.arrival_city, users.username, users.rating, users.photo
