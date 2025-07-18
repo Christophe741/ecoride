@@ -1,6 +1,26 @@
 <?php
 session_start();
 $pageTitle = "Connexion"; 
+require_once 'db/config.php';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    $user = $stmt->fetch();
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['role'] = $user['role'];
+        if ($user['role'] === 'admin') {
+            header('Location: admin/index.php');
+        } else {
+            header('Location: index.php');
+        }
+        exit;
+    } else {
+        $erreur = "Email ou mot de passe incorrect.";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,14 +30,14 @@ $pageTitle = "Connexion";
    <?php require_once 'includes/header.php';?> 
       <main class="form-container">
     <h2>Connexion</h2>
-    <p id="login-error" style="color:red;"></p>
-     <form id="login-form">
+    <?php if (!empty($erreur)) echo "<p style='color:red;'>$erreur</p>"; ?>
+    <form method="post">
         <input type="email" name="email" placeholder="Email" required><br>
         <input type="password" name="password" placeholder="Mot de passe" required><br>
         <button type="submit">Se connecter</button>
     </form>
 </main>
-<script type="module" src="js/login.js"></script>
+
 <?php require_once 'includes/footer.php'; ?>
 </body>
 </html>
