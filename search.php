@@ -1,6 +1,7 @@
 <?php
  session_start();
  $pageTitle = "Résultats covoiturage";
+ $basePath = ''; 
 ?>
 
 <!DOCTYPE html>

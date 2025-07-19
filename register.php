@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pageTitle = "Inscription";
+$basePath = '/'; 
 require_once 'db/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -1,10 +1,11 @@
 <?php
 session_start();
 $pageTitle = "Détail du trajet";
+$basePath = '/'; 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <?php require_once 'includes/head.php'; ?>
 
 <body>

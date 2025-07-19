@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pageTitle = "Mentions légales";
+$basePath = '/'; 
 ?>
 <!DOCTYPE html>
 <html lang="fr">

@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pageTitle = "Contact"; 
+$basePath = '/'; 
 ?>
 <!DOCTYPE html>
 <html lang="fr">

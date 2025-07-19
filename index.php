@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pageTitle = "EcoRide - Accueil";
+$basePath = '/'; 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
