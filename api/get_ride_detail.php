@@ -28,7 +28,6 @@ if ($ride) {
         unset($ride['description']);
     }
 
-    
     $labels = [
     'chatty_level' => 'Ambiance',
     'music_taste'  => 'Musique',
@@ -37,14 +36,14 @@ if ($ride) {
      ];
     
     $preferences = [];
-    foreach ($ride as $field => $value) {
-        if (!empty($value) && isset($labels[$field])) {
+    foreach ($labels as $field => $label) {
+        if (isset($ride[$field]) && !empty($ride[$field])) {
             $preferences[] = [
-                'key' => $labels[$field],
-                'value' => $value
+                'key' => $label,
+                'value' => $ride[$field]
             ];
-            unset($ride[$field]);
         }
+        unset($ride[$field]);
     }
     $ride['preferences'] = $preferences;
     
