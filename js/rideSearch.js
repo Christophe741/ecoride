@@ -45,8 +45,11 @@ function buildCard(ride, query) {
   const right = document.createElement("div");
   right.className = "ride-card__right";
   const badge = document.createElement("span");
-  badge.className = "ride-card__badge";
-  badge.textContent = "✔ Écologique";
+  if (ride["is_eco_friendly"]) {
+    badge.className = "ride-card__badge";
+    badge.textContent = "✔ Écologique";
+  }
+
   const link = document.createElement("a");
   link.className = "ride-card__button";
   const params = new URLSearchParams();

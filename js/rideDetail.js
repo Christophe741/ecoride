@@ -45,6 +45,13 @@ function renderRideDetail(ride, container) {
   const info = document.createElement("div");
   info.className = "ride-detail__info";
 
+  const badge = document.createElement("span");
+  if (ride["is_eco_friendly"]) {
+    badge.className = "ride-card__badge";
+    badge.textContent = "✔ Écologique";
+    info.appendChild(badge);
+  }
+
   info.append(
     buildLine("Départ :", ride.departure_city),
     buildLine("Arrivée :", ride.arrival_city),

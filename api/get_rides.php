@@ -8,7 +8,7 @@ $arrivalCity = $_GET['to'] ?? '';
 $departureDate = $_GET['date'] ?? '';
 
 if ($departureCity && $arrivalCity && $departureDate) {
-    $stmt = $pdo->prepare("SELECT rides.id, rides.seats, rides.price, rides.departure_city, rides.arrival_city, users.username, users.rating, users.photo
+    $stmt = $pdo->prepare("SELECT rides.id, rides.seats, rides.price, rides.departure_city, rides.arrival_city, rides.is_eco_friendly, users.username, users.rating, users.photo
                            FROM rides
                            JOIN users ON rides.driver_id = users.id
                            WHERE users.role = 'conducteur'
