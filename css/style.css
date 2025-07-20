@@ -168,7 +168,7 @@ main {
   transform: translateX(-50%);
 }
 
-/*---------- 7. PAGE : rides.php ----------*/
+/*---------- 7. PAGE : ride.php ----------*/
 .ride-results__section {
   padding: 40px;
   text-align: center;
@@ -231,7 +231,7 @@ main {
   cursor: pointer;
   text-decoration: none;
 }
-/*---------- 8. PAGE : rideDetail.php ----------*/
+/*---------- 8. PAGE : search.php ----------*/
 
 .ride-detail__title {
   text-align: center;
@@ -310,7 +310,7 @@ main {
   font-size: 1.3rem;
   margin-bottom: 10px;
 }
-/*---------- 10. PAGES : contact.php et register.php ----------*/
+/*---------- 10. PAGES : contact.php & register.php ----------*/
 .form-container {
   text-align: center;
 }
