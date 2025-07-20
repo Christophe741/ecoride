@@ -12,8 +12,9 @@ $basePath = '../';
 <?php require_once __DIR__ . '/../includes/head.php'; ?>
 <?php require_once __DIR__ . '/../includes/header.php'; ?>
 <body>
+  <main>
     <h1>Espace administrateur</h1>
-    <p><a href="../logout.php">Se déconnecter</a></p>
+  </main>
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

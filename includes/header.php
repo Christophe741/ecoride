@@ -1,5 +1,5 @@
 <header class="header">
-  <a href="index.php" class="header__logo">
+  <a href="<?= $basePath ?>index.php" class="header__logo">
     <span class="header__logo--green">E</span>co<span class="header__logo--green">R</span>ide
   </a>
   <div class="header__menu">
