@@ -26,7 +26,7 @@ function buildCard(ride) {
   const params = new URLSearchParams();
   params.set("from", ride.departure_city);
   params.set("to", ride.arrival_city);
-  params.set("date", ride.departure_time);
+  params.set("date", ride.departure_time.split(" ")[0]);
   params.set("id", ride.id);
   link.href = `ride.php?${params.toString()}`;
   link.textContent = "Détail";
