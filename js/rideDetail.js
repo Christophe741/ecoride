@@ -1,85 +1,78 @@
 import { domReady } from "./domReady.js";
 
-function buildLine(key, value) {
-  const p = document.createElement("p");
-  p.className = "ride-detail__line";
-  if (key) {
-    const strong = document.createElement("strong");
-    strong.textContent = key;
-    p.appendChild(strong);
-    p.append(` ${value}`);
-  } else {
-    p.textContent = value;
-  }
-  return p;
-}
-
 function renderRideDetail(ride, container) {
-  const card = document.createElement("div");
-  card.className = "ride-detail__card";
+  const tpl = document.getElementById("ride-detail-template");
+  const card = tpl.content.firstElementChild.cloneNode(true);
 
-  const driver = document.createElement("div");
-  driver.className = "ride-detail__driver-info";
-
-  const img = document.createElement("img");
-  img.className = "ride-detail__profile-photo";
+  const img = card.querySelector(".ride-detail__profile-photo");
   img.src = `assets/profile-pictures/${ride.photo}`;
   img.alt = `Photo de ${ride.username}`;
 
-  const username = document.createElement("h2");
-  username.className = "ride-detail__username";
-  username.textContent = ride.username;
+  img.src = `assets/profile-pictures/${ride.photo}`;
+  img.alt = `Photo de ${ride.username}`;
 
-  const note = buildLine(null, `Note : ${ride.rating}/5`);
+  card.querySelector(".ride-detail__username").textContent = ride.username;
+  card.querySelector(".ride-note").textContent = `Note : ${ride.rating}/5`;
 
-  const prefs = document.createElement("div");
-  prefs.className = "ride-detail__preferences";
-  if (Array.isArray(ride.preferences)) {
+  const prefsContainer = card.querySelector(".ride-detail__preferences");
+  const model = prefsContainer.querySelector(".pref-item");
+
+  if (Array.isArray(ride.preferences) && ride.preferences.length > 0) {
     ride.preferences.forEach((pref) => {
-      prefs.appendChild(buildLine(pref.key + " :", pref.value));
+      const line = model.cloneNode(true);
+      line.querySelector(".pref-key").textContent = `${pref.key} :`;
+      line.querySelector(".pref-value").textContent = pref.value;
+      prefsContainer.appendChild(line);
     });
+    model.remove();
+  } else {
+    prefsContainer.remove();
   }
 
-  driver.append(img, username, note, prefs);
-
-  const info = document.createElement("div");
-  info.className = "ride-detail__info";
-
-  const badge = document.createElement("span");
+  const badge = card.querySelector(".ride-card__badge");
   if (ride["is_eco_friendly"]) {
-    badge.className = "ride-card__badge";
     badge.textContent = "✔ Écologique";
-    info.appendChild(badge);
+  } else {
+    badge.remove();
   }
 
-  info.append(
-    buildLine("Départ :", ride.departure_city),
-    buildLine("Arrivée :", ride.arrival_city),
-    buildLine(
-      "Date et heure :",
-      new Date(ride.departure_time).toLocaleString("fr-FR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    ),
-    buildLine("Durée :", ride.duration.substring(0, 5)),
-    buildLine("Prix :", `${ride.price} €`),
-    buildLine("Places disponibles :", ride.seats)
+  card.querySelector(".ride-departure").textContent = ride.departure_city;
+  card.querySelector(".ride-arrival").textContent = ride.arrival_city;
+  card.querySelector(".ride-date").textContent = new Date(
+    ride.departure_time
+  ).toLocaleString("fr-FR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  card.querySelector(".ride-duration").textContent = ride.duration.substring(
+    0,
+    5
   );
-  if (ride.vehicle) {
-    if (ride.vehicle.brand || ride.vehicle.model || ride.vehicle.fuel_type) {
-      const veh = `${ride.vehicle.brand} ${ride.vehicle.model} ${ride.vehicle.fuel_type}`;
-      info.appendChild(buildLine("Véhicule :", veh));
-    }
-  }
-  if (ride.description) {
-    info.append(buildLine("Description :", ride.description));
+  card.querySelector(".ride-price").textContent = `${ride.price} €`;
+  card.querySelector(".ride-seats").textContent = ride.seats;
+
+  const vehContainer = card.querySelector(".ride-vehicle-container");
+  if (
+    ride.vehicle &&
+    (ride.vehicle.brand || ride.vehicle.model || ride.vehicle.fuel_type)
+  ) {
+    card.querySelector(
+      ".ride-vehicle"
+    ).textContent = `${ride.vehicle.brand} ${ride.vehicle.model} ${ride.vehicle.fuel_type}`;
+  } else {
+    vehContainer.remove();
   }
 
-  card.append(driver, info);
+  const descContainer = card.querySelector(".ride-description-container");
+  if (ride.description) {
+    card.querySelector(".ride-description").textContent = ride.description;
+  } else {
+    descContainer.remove();
+  }
+
   container.appendChild(card);
 }
 
