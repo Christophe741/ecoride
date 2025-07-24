@@ -37,8 +37,12 @@ function buildCard(ride) {
 domReady(() => {
   const container = document.getElementById("results");
   const form = document.getElementById("search-form");
+  const title = document.getElementById("results-title");
 
   const fetchRides = (from, to, date) => {
+    if (title) {
+      title.hidden = false;
+    }
     container.innerHTML = "";
     fetch(
       `api/get_rides.php?from=${encodeURIComponent(
