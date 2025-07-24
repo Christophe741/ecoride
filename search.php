@@ -16,7 +16,7 @@
   <section class="ride-results__section">
     <h1 class="ride-results__title">Résultats de recherche</h1>
     <div id="results" class="ride-results__list"></div>
-   <template id="ride-card-template">
+    <template id="ride-card-template">
       <div class="ride-card">
         <div class="ride-card__left">
           <img class="ride-card__photo" src="" alt="" />

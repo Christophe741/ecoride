@@ -36,35 +36,57 @@ function buildCard(ride) {
 
 domReady(() => {
   const container = document.getElementById("results");
+  const form = document.getElementById("search-form");
+
+  const fetchRides = (from, to, date) => {
+    container.innerHTML = "";
+    fetch(
+      `api/get_rides.php?from=${encodeURIComponent(
+        from
+      )}&to=${encodeURIComponent(to)}&date=${encodeURIComponent(date)}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.rides.length) {
+          data.rides.forEach((ride) => container.appendChild(buildCard(ride)));
+        } else {
+          container.textContent = "Aucun trajet trouvé pour cette recherche.";
+        }
+      })
+      .catch(() => {
+        container.textContent = "Erreur lors du chargement des trajets.";
+      });
+  };
 
   const params = new URLSearchParams(window.location.search);
-  const departure_city = params.get("from");
-  const arrival_city = params.get("to");
-  const departure_time = params.get("date");
+  const fromParam = params.get("from");
+  const toParam = params.get("to");
+  const dateParam = params.get("date");
 
-  if (!(departure_city && arrival_city && departure_time)) {
-    container.textContent =
-      "Veuillez saisir une ville de départ, d'arrivée et une date.";
-    return;
+  if (fromParam && toParam && dateParam) {
+    fetchRides(fromParam, toParam, dateParam);
   }
 
-  fetch(
-    `api/get_rides.php?from=${encodeURIComponent(
-      departure_city
-    )}&to=${encodeURIComponent(arrival_city)}&date=${encodeURIComponent(
-      departure_time
-    )}`
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.success && data.rides.length) {
-        data.rides.forEach((ride) => container.appendChild(buildCard(ride)));
-      } else {
-        container.textContent = "Aucun trajet trouvé pour cette recherche.";
-      }
-    })
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const from = form.elements.from.value;
+    const to = form.elements.to.value;
+    const date = form.elements.date.value;
 
-    .catch(() => {
-      container.textContent = "Erreur lors du chargement des trajets.";
-    });
+    if (!(from && to && date)) {
+      container.textContent =
+        "Veuillez saisir une ville de départ, d'arrivée et une date.";
+      return;
+    }
+
+    const searchParams = new URLSearchParams();
+    searchParams.set("from", from);
+    searchParams.set("to", to);
+    searchParams.set("date", date);
+
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.pushState(null, "", newUrl);
+
+    fetchRides(from, to, date);
+  });
 });
