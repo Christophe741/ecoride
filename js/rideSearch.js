@@ -93,4 +93,22 @@ domReady(() => {
 
     fetchRides(from, to, date);
   });
+  window.addEventListener("popstate", () => {
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from");
+    const to = params.get("to");
+    const date = params.get("date");
+
+    form.elements.from.value = from;
+    form.elements.to.value = to;
+    form.elements.date.value = date;
+
+    if (from && to && date) {
+      fetchRides(from, to, date);
+    } else {
+      if (title) {
+        title.hidden = true;
+      }
+    }
+  });
 });
