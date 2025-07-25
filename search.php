@@ -35,6 +35,9 @@
         </div>
       </div>
     </template>
+    <template id="error-template">
+      <p class="error"></p>
+    </template>
   </section>
 </main>
 

@@ -5,18 +5,13 @@ import { domReady } from "./domReady.js";
 // === Fonctions liées au rendu DOM ===
 
 function buildCard(ride) {
-  const card = cloneTemplate();
+  const card = cloneTemplate("ride-card-template");
   updateCardImage(card, ride);
   updateCardText(card, ride);
   updateCardBadge(card, ride);
   updateCardLink(card, ride);
 
   return card;
-}
-
-function cloneTemplate() {
-  const tpl = document.getElementById("ride-card-template");
-  return tpl.content.firstElementChild.cloneNode(true);
 }
 
 function updateCardImage(card, ride) {
@@ -55,7 +50,17 @@ function updateCardLink(card, ride) {
   link.textContent = "Détail";
 }
 
+function renderError(message, container) {
+  const errorEl = cloneTemplate("error-template");
+  errorEl.textContent = message;
+  container.appendChild(errorEl);
+}
 // === Fonctions utilitaires ===
+
+function cloneTemplate(id) {
+  const tpl = document.getElementById(id);
+  return tpl?.content.firstElementChild.cloneNode(true);
+}
 
 function getPageParams() {
   const params = new URLSearchParams(window.location.search);
@@ -93,11 +98,14 @@ function fetchRides(from, to, date, container, title) {
       if (data.success && data.rides.length) {
         data.rides.forEach((ride) => container.appendChild(buildCard(ride)));
       } else {
-        container.textContent = "Aucun trajet trouvé pour cette recherche.";
+        renderError(
+          "Erreur : Aucun trajet trouvé pour cette recherche.",
+          container
+        );
       }
     })
     .catch(() => {
-      container.textContent = "Erreur lors du chargement des trajets.";
+      renderError("Erreur : Erreur lors du chargement des trajets.", container);
     });
 }
 
