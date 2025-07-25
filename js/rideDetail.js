@@ -1,22 +1,34 @@
+// === Import des dépendances ===
+
 import { domReady } from "./domReady.js";
 
-function renderRideDetail(ride, container) {
+// === Fonctions liées au rendu DOM ===
+
+function buildRideDetail(ride) {
+  const card = cloneTemplate();
+  updateProfile(card, ride);
+  updateRideInfo(card, ride);
+  return card;
+}
+
+function cloneTemplate() {
   const tpl = document.getElementById("ride-detail-template");
-  const card = tpl.content.firstElementChild.cloneNode(true);
+  return tpl.content.firstElementChild.cloneNode(true);
+}
 
+function updateProfile(card, ride) {
   const img = card.querySelector(".ride-detail__profile-photo");
-  img.src = `assets/profile-pictures/${ride.photo}`;
-  img.alt = `Photo de ${ride.username}`;
-
   img.src = `assets/profile-pictures/${ride.photo}`;
   img.alt = `Photo de ${ride.username}`;
 
   card.querySelector(".ride-detail__username").textContent = ride.username;
   card.querySelector(".ride-note").textContent = `Note : ${ride.rating}/5`;
+  updatePreferences(card, ride);
+}
 
+function updatePreferences(card, ride) {
   const prefsContainer = card.querySelector(".ride-detail__preferences");
   const model = prefsContainer.querySelector(".pref-item");
-
   if (Array.isArray(ride.preferences) && ride.preferences.length > 0) {
     ride.preferences.forEach((pref) => {
       const line = model.cloneNode(true);
@@ -28,32 +40,35 @@ function renderRideDetail(ride, container) {
   } else {
     prefsContainer.remove();
   }
+}
 
-  const badge = card.querySelector(".ride-card__badge");
-  if (ride["is_eco_friendly"]) {
-    badge.textContent = "✔ Écologique";
-  } else {
-    badge.remove();
-  }
-
+function updateRideInfo(card, ride) {
+  updateEcoBadge(card, ride);
   card.querySelector(".ride-departure").textContent = ride.departure_city;
   card.querySelector(".ride-arrival").textContent = ride.arrival_city;
-  card.querySelector(".ride-date").textContent = new Date(
+  card.querySelector(".ride-date").textContent = formatDate(
     ride.departure_time
-  ).toLocaleString("fr-FR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  );
   card.querySelector(".ride-duration").textContent = ride.duration.substring(
     0,
     5
   );
   card.querySelector(".ride-price").textContent = `${ride.price} €`;
   card.querySelector(".ride-seats").textContent = ride.seats;
+  updateVehicle(card, ride);
+  updateDescription(card, ride);
+}
 
+function updateEcoBadge(card, ride) {
+  const badge = card.querySelector(".ride-card__badge");
+  if (ride.is_eco_friendly) {
+    badge.textContent = "✔ Écologique";
+  } else {
+    badge.remove();
+  }
+}
+
+function updateVehicle(card, ride) {
   const vehContainer = card.querySelector(".ride-vehicle-container");
   if (
     ride.vehicle &&
@@ -65,15 +80,19 @@ function renderRideDetail(ride, container) {
   } else {
     vehContainer.remove();
   }
+}
 
+function updateDescription(card, ride) {
   const descContainer = card.querySelector(".ride-description-container");
   if (ride.description) {
     card.querySelector(".ride-description").textContent = ride.description;
   } else {
     descContainer.remove();
   }
+}
 
-  container.appendChild(card);
+function renderRideDetail(ride, container) {
+  container.appendChild(buildRideDetail(ride));
 }
 
 function renderBackButton(container) {
@@ -88,17 +107,21 @@ function renderBackButton(container) {
   container.appendChild(link);
 }
 
-domReady(() => {
-  const container = document.getElementById("ride-detail");
+// === Fonctions utilitaires ===
 
-  const params = new URLSearchParams(window.location.search);
-  const rideId = params.get("id");
+function formatDate(date) {
+  return new Date(date).toLocaleString("fr-FR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
 
-  if (!rideId) {
-    container.innerHTML = `<p class="ride-detail__error">Erreur : aucun trajet sélectionné.</p>`;
-    return;
-  }
+// === Fonctions métier ===
 
+function fetchRideDetail(rideId, container) {
   fetch(`api/get_ride_detail.php?id=${encodeURIComponent(rideId)}`)
     .then((res) => res.json())
     .then((data) => {
@@ -113,4 +136,18 @@ domReady(() => {
     .catch(() => {
       container.innerHTML = `<p class="ride-detail__error">Erreur lors du chargement du trajet.</p>`;
     });
+}
+
+// === Point d’entrée du script ===
+
+domReady(() => {
+  const container = document.getElementById("ride-detail");
+  const rideId = new URLSearchParams(window.location.search).get("id");
+
+  if (!rideId) {
+    container.innerHTML = `<p class="ride-detail__error">Erreur : aucun trajet sélectionné.</p>`;
+    return;
+  }
+
+  fetchRideDetail(rideId, container);
 });
