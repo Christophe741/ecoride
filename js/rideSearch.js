@@ -1,15 +1,22 @@
+// === Import des dépendances ===
+
 import { domReady } from "./domReady.js";
 
-function buildCard(ride) {
-  const tpl = document.getElementById("ride-card-template");
-  const card = tpl.content.firstElementChild.cloneNode(true);
+// === Fonctions liées au rendu DOM ===
 
+function buildCard(ride) {
+  const card = cloneTemplate();
   updateCardImage(card, ride);
   updateCardText(card, ride);
   updateCardBadge(card, ride);
   updateCardLink(card, ride);
 
   return card;
+}
+
+function cloneTemplate() {
+  const tpl = document.getElementById("ride-card-template");
+  return tpl.content.firstElementChild.cloneNode(true);
 }
 
 function updateCardImage(card, ride) {
@@ -48,6 +55,8 @@ function updateCardLink(card, ride) {
   link.textContent = "Détail";
 }
 
+// === Fonctions utilitaires ===
+
 function getPageParams() {
   const params = new URLSearchParams(window.location.search);
   return {
@@ -66,6 +75,8 @@ function updateHistory(from, to, date) {
   const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
   window.history.pushState(null, "", newUrl);
 }
+
+// === Fonctions métier ===
 
 function fetchRides(from, to, date, container, title) {
   if (title) {
@@ -119,6 +130,8 @@ function handlePopState(form, container, title) {
     title.hidden = true;
   }
 }
+
+// === Point d’entrée du script ===
 
 domReady(() => {
   const container = document.getElementById("results");
