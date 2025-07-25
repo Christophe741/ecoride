@@ -5,15 +5,10 @@ import { domReady } from "./domReady.js";
 // === Fonctions liées au rendu DOM ===
 
 function buildRideDetail(ride) {
-  const card = cloneTemplate();
+  const card = cloneTemplate("ride-detail-template");
   updateProfile(card, ride);
   updateRideInfo(card, ride);
   return card;
-}
-
-function cloneTemplate() {
-  const tpl = document.getElementById("ride-detail-template");
-  return tpl.content.firstElementChild.cloneNode(true);
 }
 
 function updateProfile(card, ride) {
@@ -95,6 +90,12 @@ function renderRideDetail(ride, container) {
   container.appendChild(buildRideDetail(ride));
 }
 
+function renderError(message, container) {
+  const errorEl = cloneTemplate("error-template");
+  errorEl.textContent = message;
+  container.appendChild(errorEl);
+}
+
 function renderBackButton(container) {
   const params = new URLSearchParams(window.location.search);
   params.delete("id");
@@ -108,6 +109,11 @@ function renderBackButton(container) {
 }
 
 // === Fonctions utilitaires ===
+
+function cloneTemplate(id) {
+  const tpl = document.getElementById(id);
+  return tpl?.content.firstElementChild.cloneNode(true);
+}
 
 function formatDate(date) {
   return new Date(date).toLocaleString("fr-FR", {
@@ -126,7 +132,7 @@ function fetchRideDetail(rideId, container) {
     .then((res) => res.json())
     .then((data) => {
       if (!data.success) {
-        container.innerHTML = `<p class="ride-detail__error">Trajet introuvable.</p>`;
+        renderError("Trajet introuvable.", container);
         return;
       }
 
@@ -134,7 +140,7 @@ function fetchRideDetail(rideId, container) {
       renderBackButton(container);
     })
     .catch(() => {
-      container.innerHTML = `<p class="ride-detail__error">Erreur lors du chargement du trajet.</p>`;
+      renderError("Erreur lors du chargement du trajet.", container);
     });
 }
 
@@ -145,7 +151,7 @@ domReady(() => {
   const rideId = new URLSearchParams(window.location.search).get("id");
 
   if (!rideId) {
-    container.innerHTML = `<p class="ride-detail__error">Erreur : aucun trajet sélectionné.</p>`;
+    renderError("Erreur : aucun trajet sélectionné.", container);
     return;
   }
 

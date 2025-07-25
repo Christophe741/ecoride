@@ -41,7 +41,10 @@ $basePath = '/';
         </div>
       </div>
     </template>
-</section>
+    <template id="error-template">
+      <p class="error"></p>
+    </template>
+  </section>
 </main>
 
 <script type="module" src="js/rideDetail.js"></script>
