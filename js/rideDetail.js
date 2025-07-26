@@ -1,6 +1,7 @@
 // === Import des dépendances ===
 
 import { domReady } from "./domReady.js";
+import { cloneTemplate, renderError } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
 
@@ -90,12 +91,6 @@ function renderRideDetail(ride, container) {
   container.appendChild(buildRideDetail(ride));
 }
 
-function renderError(message, container) {
-  const errorEl = cloneTemplate("error-template");
-  errorEl.textContent = message;
-  container.appendChild(errorEl);
-}
-
 function renderBackButton(container) {
   const params = new URLSearchParams(window.location.search);
   params.delete("id");
@@ -109,11 +104,6 @@ function renderBackButton(container) {
 }
 
 // === Fonctions utilitaires ===
-
-function cloneTemplate(id) {
-  const tpl = document.getElementById(id);
-  return tpl?.content.firstElementChild.cloneNode(true);
-}
 
 function formatDate(date) {
   return new Date(date).toLocaleString("fr-FR", {

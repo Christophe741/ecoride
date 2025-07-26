@@ -1,6 +1,7 @@
 // === Import des dépendances ===
 
 import { domReady } from "./domReady.js";
+import { cloneTemplate, renderError } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
 
@@ -50,17 +51,7 @@ function updateCardLink(card, ride) {
   link.textContent = "Détail";
 }
 
-function renderError(message, container) {
-  const errorEl = cloneTemplate("error-template");
-  errorEl.textContent = message;
-  container.appendChild(errorEl);
-}
 // === Fonctions utilitaires ===
-
-function cloneTemplate(id) {
-  const tpl = document.getElementById(id);
-  return tpl?.content.firstElementChild.cloneNode(true);
-}
 
 function getPageParams() {
   const params = new URLSearchParams(window.location.search);
