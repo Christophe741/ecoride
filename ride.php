@@ -47,7 +47,7 @@ $basePath = '/';
   </section>
 </main>
 
-<script type="module" src="js/rideDetail.js"></script>
+<script type="module" src="js/ride.js"></script>
 <?php require_once 'includes/footer.php'; ?>
 </body>
 </html>

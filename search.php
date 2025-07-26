@@ -41,7 +41,7 @@
   </section>
 </main>
 
-<script type="module" src="js/rideSearch.js"></script>
+<script type="module" src="js/search.js"></script>
 <?php require_once 'includes/footer.php'; ?>
 </body>
 </html>
