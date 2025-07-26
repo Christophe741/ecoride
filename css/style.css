@@ -343,6 +343,7 @@ main {
     padding: 5px;
   }
   .ride-card__middle {
+    text-align: center;
     padding: 0 5px;
   }
   .ride-card p {
