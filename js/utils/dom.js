@@ -6,6 +6,5 @@ export function cloneTemplate(id) {
 export function renderError(message, container) {
   const errorEl = cloneTemplate("error-template");
   errorEl.textContent = message;
-  container.innerHTML = "";
   container.appendChild(errorEl);
 }
