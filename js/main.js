@@ -1,5 +1,5 @@
 import { domReady } from "./domReady.js";
-import { toggler } from "./menuToggle.js";
+import { toggler } from "./navigation.js";
 
 domReady(() => {
   const icon = document.querySelector("#toggler");
