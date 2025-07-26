@@ -16,7 +16,7 @@ $stmt = $pdo->prepare("SELECT rides.*, users.username, users.photo, users.rating
                        JOIN users ON rides.driver_id = users.id
                        LEFT JOIN user_preferences AS prefs ON prefs.user_id = users.id
                        LEFT JOIN vehicles AS v ON v.id = rides.vehicle_id
-                       WHERE rides.id = ? AND users.role = 'conducteur'");
+                       WHERE rides.id = ?");
 $stmt->execute([$id]);
 $ride = $stmt->fetch(PDO::FETCH_ASSOC);
 
