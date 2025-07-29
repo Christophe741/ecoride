@@ -26,8 +26,8 @@ $basePath = '/';
             <strong class="pref-key"></strong> <span class="pref-value"></span>
             </p>
           </div>
-
         </div>
+        
         <div class="ride-detail__info">
           <span class="ride-card__badge"></span>
           <p class="ride-detail__line"><strong>Départ :</strong> <span class="ride-departure"></span></p>

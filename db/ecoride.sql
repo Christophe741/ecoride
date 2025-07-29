@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : dim. 27 juil. 2025 à 07:38
+-- Généré le : mar. 29 juil. 2025 à 13:42
 -- Version du serveur : 10.4.34-MariaDB-1:10.4.34+maria~ubu2004
 -- Version de PHP : 8.2.27
 
@@ -31,8 +31,8 @@ CREATE TABLE `bookings` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `ride_id` int(11) NOT NULL,
-  `statut` enum('en attente','confirmé','annulé') DEFAULT 'en attente',
-  `created_at` datetime DEFAULT current_timestamp()
+  `statut` enum('en attente','confirmé','annulé') NOT NULL DEFAULT 'en attente',
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -50,9 +50,9 @@ CREATE TABLE `rides` (
   `departure_time` datetime NOT NULL,
   `price` decimal(5,2) NOT NULL,
   `seats` int(11) NOT NULL,
-  `duration` time DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `is_eco_friendly` tinyint(1) DEFAULT 0
+  `duration` time NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `is_eco_friendly` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -75,12 +75,12 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('utilisateur','modérateur','admin') DEFAULT 'utilisateur',
-  `credits` int(11) DEFAULT 20,
+  `role` enum('utilisateur','modérateur','admin') NOT NULL DEFAULT 'utilisateur',
+  `credits` int(11) NOT NULL DEFAULT 20,
   `rating` decimal(2,1) DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT 1,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `photo` varchar(255) DEFAULT 'default-profile.png'
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `photo` varchar(255) NOT NULL DEFAULT 'default-profile.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -127,10 +127,10 @@ INSERT INTO `user_preferences` (`user_id`, `chatty_level`, `music_taste`, `smoke
 CREATE TABLE `vehicles` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `brand` varchar(50) DEFAULT NULL,
-  `model` varchar(50) DEFAULT NULL,
+  `brand` varchar(50) NOT NULL,
+  `model` varchar(50) NOT NULL,
   `fuel_type` enum('essence','diesel','électrique') NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -198,7 +198,7 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT pour la table `rides`
 --
 ALTER TABLE `rides`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -210,7 +210,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Contraintes pour les tables déchargées
