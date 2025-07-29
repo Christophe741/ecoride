@@ -18,18 +18,21 @@ function updateProfile(card, ride) {
   img.alt = `Photo de ${ride.username}`;
 
   card.querySelector(".ride-detail__username").textContent = ride.username;
-  card.querySelector(".ride-note").textContent = `Note : ${ride.rating}/5`;
+  card.querySelector(".ride-note").textContent = `${ride.rating}/5`;
   updatePreferences(card, ride);
 }
 
 function updatePreferences(card, ride) {
   const prefsContainer = card.querySelector(".ride-detail__preferences");
-  const model = prefsContainer.querySelector(".pref-item");
+  const model = prefsContainer.querySelector(".ride-detail__preference-item");
   if (Array.isArray(ride.preferences) && ride.preferences.length > 0) {
     ride.preferences.forEach((pref) => {
       const line = model.cloneNode(true);
-      line.querySelector(".pref-key").textContent = `${pref.key} :`;
-      line.querySelector(".pref-value").textContent = pref.value;
+      line.querySelector(
+        ".ride-detail__preference-key"
+      ).textContent = `${pref.key} :`;
+      line.querySelector(".ride-detail__preference-value").textContent =
+        pref.value;
       prefsContainer.appendChild(line);
     });
     model.remove();
@@ -65,7 +68,7 @@ function updateEcoBadge(card, ride) {
 }
 
 function updateVehicle(card, ride) {
-  const vehContainer = card.querySelector(".ride-vehicle-container");
+  const vehContainer = card.querySelector(".ride-detail__vehicle");
   if (
     ride.vehicle &&
     (ride.vehicle.brand || ride.vehicle.model || ride.vehicle.fuel_type)
@@ -79,7 +82,7 @@ function updateVehicle(card, ride) {
 }
 
 function updateDescription(card, ride) {
-  const descContainer = card.querySelector(".ride-description-container");
+  const descContainer = card.querySelector(".ride-detail__description");
   if (ride.description) {
     card.querySelector(".ride-description").textContent = ride.description;
   } else {

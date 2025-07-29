@@ -247,6 +247,7 @@ main {
 .ride-detail__card {
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   width: fit-content;
   max-width: 800px;
   gap: 30px;
@@ -256,11 +257,26 @@ main {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.ride-detail__driver-info {
+.ride-detail__top {
+  display: flex;
+}
+.ride-detail__top-left {
+  padding-right: 20px;
+}
+.ride-detail__top-middle {
+  flex: 1;
+}
+
+.ride-detail__middle1 {
   text-align: center;
 }
-.ride-detail__info {
-  margin: auto 0;
+
+.ride-detail__middle2 {
+  display: flex;
+  padding: 20px 0px;
+}
+.ride-detail__bottom {
+  padding-top: 20px;
 }
 
 .ride-detail__profile-photo {
@@ -273,11 +289,11 @@ main {
 
 .ride-detail__preferences {
   text-align: left;
-  margin-top: 30px;
+  padding-right: 20px;
 }
 
 .ride-detail__line {
-  margin: 6px 0;
+  margin: 5px 0;
 }
 
 .ride-detail__back-button {
