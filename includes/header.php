@@ -11,6 +11,7 @@
           <li><a href="<?= $basePath ?>register.php" class="header__link">Créer un compte</a></li>
           <li><a href="<?= $basePath ?>login.php" class="header__link">Se connecter</a></li>
         <?php else: ?>
+          <li><a href="<?= $basePath ?>publish_ride.php" class="header__link">Publier un trajet</a></li>
           <li><a href="<?= $basePath ?>logout.php" class="header__link">Se déconnecter</a></li>
         <?php endif; ?>
         
