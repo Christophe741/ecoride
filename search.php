@@ -23,11 +23,11 @@
         </div>
         <div class="ride-card__middle">
           <h3 class="ride-card__title"></h3>
-          <p><strong>Note :</strong> <span class="ride-rating"></span></p>
-          <p><strong>Places restantes :</strong> <span class="ride-seats"></span></p>
-          <p><strong>Prix :</strong> <span class="ride-price"></span></p>
-          <p><strong>Départ :</strong> <span class="ride-departure"></span></p>
-          <p><strong>Arrivée :</strong> <span class="ride-arrival"></span></p>
+          <p><strong>Note :</strong> <span class="ride-card__rating"></span></p>
+          <p><strong>Places restantes :</strong> <span class="ride-card__seats"></span></p>
+          <p><strong>Prix :</strong> <span class="ride-card__price"></span></p>
+          <p><strong>Départ :</strong> <span class="ride-card__departure"></span></p>
+          <p><strong>Arrivée :</strong> <span class="ride-card__arrival"></span></p>
         </div>
         <div class="ride-card__right">
           <span class="ride-card__badge"></span>

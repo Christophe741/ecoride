@@ -23,11 +23,11 @@ function updateCardImage(card, ride) {
 
 function updateCardText(card, ride) {
   card.querySelector(".ride-card__title").textContent = ride.username;
-  card.querySelector(".ride-rating").textContent = `${ride.rating} / 5`;
-  card.querySelector(".ride-seats").textContent = ride.seats;
-  card.querySelector(".ride-price").textContent = `${ride.price} €`;
-  card.querySelector(".ride-departure").textContent = ride.departure_city;
-  card.querySelector(".ride-arrival").textContent = ride.arrival_city;
+  card.querySelector(".ride-card__rating").textContent = `${ride.rating} / 5`;
+  card.querySelector(".ride-card__seats").textContent = ride.seats;
+  card.querySelector(".ride-card__price").textContent = `${ride.price} €`;
+  card.querySelector(".ride-card__departure").textContent = ride.departure_city;
+  card.querySelector(".ride-card__arrival").textContent = ride.arrival_city;
 }
 
 function updateCardBadge(card, ride) {
