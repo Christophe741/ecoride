@@ -47,7 +47,7 @@ if ($ride) {
     }
     $ride['preferences'] = $preferences;
     
-    $vehicule = [
+    $vehicle = [
         'brand' => $ride['brand'] ?? null,
         'model' => $ride['model'] ?? null,
         'fuel_type' => $ride['fuel_type'] ?? null
@@ -55,7 +55,7 @@ if ($ride) {
     foreach (['brand', 'model', 'fuel_type'] as $field) {
         unset($ride[$field]);
     }
-    $ride['vehicle'] = $vehicule;
+    $ride['vehicle'] = $vehicle;
 
     echo json_encode(['success' => true, 'ride' => $ride]);
 } else {
