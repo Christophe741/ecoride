@@ -278,10 +278,6 @@ main {
 
 .ride-detail__middle2 {
   display: flex;
-  padding: 20px 0px;
-}
-.ride-detail__bottom {
-  padding-top: 20px;
 }
 
 .ride-detail__profile-photo {
