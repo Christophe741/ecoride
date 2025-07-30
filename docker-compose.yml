@@ -5,6 +5,7 @@ services:
       - "8080:80"
     volumes:
       - .:/var/www/html
+      - /var/www/html/vendor
       - /dev/null:/var/www/html/.env.local
     depends_on:
       - db
