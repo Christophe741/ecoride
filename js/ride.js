@@ -9,6 +9,11 @@ function buildRideDetail(ride) {
   const card = cloneTemplate("ride-detail-template");
   updateProfile(card, ride);
   updateRideInfo(card, ride);
+  updatePreferences(card, ride);
+  updateVehicle(card, ride);
+  updateDescription(card, ride);
+  updateEcoBadge(card, ride);
+
   return card;
 }
 
@@ -19,7 +24,20 @@ function updateProfile(card, ride) {
 
   card.querySelector(".ride-detail__username").textContent = ride.username;
   card.querySelector(".ride-note").textContent = `${ride.rating}/5`;
-  updatePreferences(card, ride);
+}
+
+function updateRideInfo(card, ride) {
+  card.querySelector(".ride-departure").textContent = ride.departure_city;
+  card.querySelector(".ride-arrival").textContent = ride.arrival_city;
+  card.querySelector(".ride-date").textContent = formatDate(
+    ride.departure_time
+  );
+  card.querySelector(".ride-duration").textContent = ride.duration.substring(
+    0,
+    5
+  );
+  card.querySelector(".ride-price").textContent = `${ride.price} €`;
+  card.querySelector(".ride-seats").textContent = ride.seats;
 }
 
 function updatePreferences(card, ride) {
@@ -39,23 +57,6 @@ function updatePreferences(card, ride) {
   } else {
     prefsContainer.remove();
   }
-}
-
-function updateRideInfo(card, ride) {
-  updateEcoBadge(card, ride);
-  card.querySelector(".ride-departure").textContent = ride.departure_city;
-  card.querySelector(".ride-arrival").textContent = ride.arrival_city;
-  card.querySelector(".ride-date").textContent = formatDate(
-    ride.departure_time
-  );
-  card.querySelector(".ride-duration").textContent = ride.duration.substring(
-    0,
-    5
-  );
-  card.querySelector(".ride-price").textContent = `${ride.price} €`;
-  card.querySelector(".ride-seats").textContent = ride.seats;
-  updateVehicle(card, ride);
-  updateDescription(card, ride);
 }
 
 function updateEcoBadge(card, ride) {
