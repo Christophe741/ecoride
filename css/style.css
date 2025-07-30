@@ -266,6 +266,11 @@ main {
 .ride-detail__top-middle {
   flex: 1;
 }
+.ride-detail__top-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .ride-detail__middle1 {
   text-align: center;
