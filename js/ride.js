@@ -119,7 +119,7 @@ function fetchRideDetail(rideId, container) {
     .then((res) => res.json())
     .then((data) => {
       if (!data.success) {
-        renderError("Trajet introuvable.", container);
+        renderError(data.message || "Trajet introuvable.", container);
         return;
       }
 

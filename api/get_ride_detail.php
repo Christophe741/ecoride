@@ -11,10 +11,10 @@ if (!$id) {
 
 $stmt = $pdo->prepare("SELECT rides.*, users.username, users.photo, users.rating,
                                prefs.chatty_level, prefs.music_taste, prefs.smoker, prefs.pets,
-                              v.brand, v.model, v.fuel_type
+                              vehicles.brand, vehicles.model, vehicles.fuel_type
                        FROM rides
                        JOIN users ON rides.driver_id = users.id
-                       JOIN vehicles AS v ON v.id = rides.vehicle_id
+                       JOIN vehicles  ON vehicles.id = rides.vehicle_id
                        LEFT JOIN user_preferences AS prefs ON prefs.user_id = users.id
                        WHERE rides.id = ?");
 $stmt->execute([$id]);
