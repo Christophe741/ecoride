@@ -14,8 +14,8 @@ $stmt = $pdo->prepare("SELECT rides.*, users.username, users.photo, users.rating
                               v.brand, v.model, v.fuel_type
                        FROM rides
                        JOIN users ON rides.driver_id = users.id
+                       JOIN vehicles AS v ON v.id = rides.vehicle_id
                        LEFT JOIN user_preferences AS prefs ON prefs.user_id = users.id
-                       LEFT JOIN vehicles AS v ON v.id = rides.vehicle_id
                        WHERE rides.id = ?");
 $stmt->execute([$id]);
 $ride = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -48,9 +48,9 @@ if ($ride) {
     $ride['preferences'] = $preferences;
     
     $vehicle = [
-        'brand' => $ride['brand'] ?? null,
-        'model' => $ride['model'] ?? null,
-        'fuel_type' => $ride['fuel_type'] ?? null
+        'brand' => $ride['brand'],
+        'model' => $ride['model'],
+        'fuel_type' => $ride['fuel_type']
     ];
     foreach (['brand', 'model', 'fuel_type'] as $field) {
         unset($ride[$field]);

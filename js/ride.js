@@ -70,16 +70,9 @@ function updateEcoBadge(card, ride) {
 
 function updateVehicle(card, ride) {
   const vehContainer = card.querySelector(".ride-detail__vehicle");
-  if (
-    ride.vehicle &&
-    (ride.vehicle.brand || ride.vehicle.model || ride.vehicle.fuel_type)
-  ) {
-    card.querySelector(
-      ".ride-vehicle"
-    ).textContent = `${ride.vehicle.brand} ${ride.vehicle.model} ${ride.vehicle.fuel_type}`;
-  } else {
-    vehContainer.remove();
-  }
+  card.querySelector(
+    ".ride-vehicle"
+  ).textContent = `${ride.vehicle.brand} ${ride.vehicle.model} ${ride.vehicle.fuel_type}`;
 }
 
 function updateDescription(card, ride) {
