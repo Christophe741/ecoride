@@ -7,11 +7,10 @@ RUN apt-get update \
     && pecl install mongodb \
     && docker-php-ext-enable mongodb \
     && docker-php-ext-install pdo_mysql \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . .
 
 RUN composer install --no-interaction --prefer-dist
-
-
