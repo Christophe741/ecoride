@@ -10,7 +10,7 @@
   padding: 0;
 }
 
-/*---------- 2. GLOBAL STYLES  ----------*/
+/*---------- 2. GLOBAL STYLES  ----------*/
 html,
 body {
   min-height: 100vh;
@@ -28,7 +28,7 @@ main {
 .error {
   color: #dc3545;
   text-align: center;
-  margin: 10px 0;
+  margin: 0.625rem 0;
 }
 
 /*---------- 3. COMPONENT : footer.php ----------*/
@@ -36,16 +36,16 @@ main {
   position: relative;
   display: flex;
   background-color: #2adb59;
-  padding: 20px;
+  padding: 1.25rem;
   justify-content: center;
 }
 
 .footer__logo {
   position: absolute;
   color: #fff;
-  left: 20px;
-  bottom: 14px;
-  font-size: 24px;
+  left: 1.25rem;
+  bottom: 0.875rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-decoration: none;
 }
@@ -57,13 +57,13 @@ main {
 .footer__mail,
 .footer__legal {
   color: #000;
-  font-size: 14px;
+  font-size: 0.875rem;
   text-decoration: none;
 }
 
 .footer__legal {
   position: absolute;
-  right: 20px;
+  right: 1.25rem;
 }
 
 /*---------- 4. COMPONENT : header.php ----------*/
@@ -73,7 +73,7 @@ main {
     #7cd9a0 16.83%,
     rgba(255, 255, 255, 0.1) 100%
   );
-  padding: 5px 20px;
+  padding: 0.3125rem 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,7 +81,7 @@ main {
 
 .header__logo {
   color: #fff;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: 600;
   text-decoration: none;
 }
@@ -99,11 +99,12 @@ main {
 .header__list {
   list-style: none;
   display: flex;
-  gap: 15px;
+  gap: 0.9375rem;
 }
 .header__burger {
   display: none;
 }
+
 /*---------- 5. COMPONENT : search_section ----------*/
 .search-hero {
   background-image: url("../assets/images/driver.jpg");
@@ -112,29 +113,29 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 40px;
+  padding: 2.5rem;
   color: #000000;
   text-align: center;
 }
 
 .search-hero__title {
-  font-size: 28px;
-  margin-bottom: 20px;
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .search-hero__form {
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  max-width: 1100px;
+  gap: 0.625rem;
+  max-width: 68.75rem;
   margin: auto;
 }
 
 .search-hero__input {
-  padding: 10px;
+  padding: 0.625rem;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 0.5rem;
+  font-size: 1rem;
   flex: 1;
 }
 
@@ -142,10 +143,10 @@ main {
   background-color: #ffffff;
   color: #000000;
   font-weight: 400;
-  padding: 10px;
-  font-size: 16px;
+  padding: 0.625rem;
+  font-size: 1rem;
   border: solid 1px black;
-  border-radius: 50px;
+  border-radius: 3.125rem;
   cursor: pointer;
 }
 
@@ -156,42 +157,42 @@ main {
 }
 
 .hero__content {
-  padding-top: 40px;
+  padding-top: 2.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 
 .hero__title {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .hero__illustration {
   position: absolute;
-  bottom: 10px;
+  bottom: 0.625rem;
   left: 50%;
   transform: translateX(-50%);
 }
 
 /*---------- 7. PAGE : ride.php ----------*/
 .ride-results__section {
-  padding: 40px;
+  padding: 2.5rem;
   text-align: center;
 }
 .ride-results__title {
   text-align: center;
-  font-size: 25px;
-  margin-bottom: 20px;
+  font-size: 1.5625rem;
+  margin-bottom: 1.25rem;
 }
 .ride-card {
   display: flex;
   align-items: center;
   border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px auto;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin: 1.25rem auto;
   background-color: #f9f9f9;
-  max-width: 800px;
+  max-width: 50rem;
 }
 
 .ride-card__photo {
@@ -207,32 +208,32 @@ main {
 }
 
 .ride-card__title {
-  margin-bottom: 6px;
+  margin-bottom: 0.375rem;
 }
 
 .ride-card__right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .ride-card__badge {
   background-color: #32cd32;
   color: white;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 14px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .ride-card__button {
   background-color: #ace9e6;
   color: #000000;
   font-weight: 400;
-  padding: 10px 15px;
-  font-size: 16px;
+  padding: 0.625rem 0.9375rem;
+  font-size: 1rem;
   border: solid 1px black;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   cursor: pointer;
   text-decoration: none;
 }
@@ -240,7 +241,7 @@ main {
 
 .ride-detail__title {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .ride-detail__card {
@@ -248,11 +249,11 @@ main {
   display: flex;
   flex-direction: column;
   width: fit-content;
-  max-width: 800px;
-  gap: 30px;
+  max-width: 50rem;
+  gap: 1.875rem;
   background-color: #f9f9f9;
-  padding: 25px;
-  border-radius: 12px;
+  padding: 1.5625rem;
+  border-radius: 0.75rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -260,7 +261,7 @@ main {
   display: flex;
 }
 .ride-detail__top-left {
-  padding-right: 20px;
+  padding-right: 1.25rem;
 }
 .ride-detail__top-middle {
   flex: 1;
@@ -284,22 +285,22 @@ main {
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 
 .ride-detail__preferences {
   text-align: left;
-  padding-right: 20px;
+  padding-right: 1.25rem;
 }
 
 .ride-detail__line {
-  margin: 5px 0;
+  margin: 0.3125rem 0;
 }
 
 .ride-detail__back-button {
   display: block;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 1.25rem;
   text-decoration: none;
   color: #2adb59;
   font-weight: bold;
@@ -316,17 +317,17 @@ main {
 
 .legal-container__title {
   font-size: 1.8rem;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .legal-container__content {
-  max-width: 600px;
-  margin-bottom: 30px;
+  max-width: 37.5rem;
+  margin-bottom: 1.875rem;
 }
 
 .legal-container__subtitle {
   font-size: 1.3rem;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 /*---------- 10. PAGES : contact.php & register.php ----------*/
 .form-container {
@@ -337,7 +338,7 @@ main {
   .header__menu {
     display: none;
     position: fixed;
-    top: 70px;
+    top: 4.375rem;
     left: 0;
     width: 100%;
     height: 100vh;
@@ -356,23 +357,23 @@ main {
   }
 
   .ride-card {
-    padding: 5px;
+    padding: 0.3125rem;
   }
   .ride-card__middle {
     text-align: center;
-    padding: 0 5px;
+    padding: 0 0.3125rem;
   }
   .ride-card p {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .ride-card__button {
-    font-size: 14px;
-    padding: 5px 10px;
+    font-size: 0.875rem;
+    padding: 0.3125rem 0.625rem;
   }
   .ride-card__badge {
-    padding: 2px 4px;
-    font-size: 12px;
+    padding: 0.125rem 0.25rem;
+    font-size: 0.75rem;
   }
   .ride-card__photo {
     width: 60px;
@@ -381,15 +382,15 @@ main {
     border: 1px solid #ccc;
   }
   .ride-results__section {
-    padding: 20px;
+    padding: 1.25rem;
     text-align: unset;
   }
   .ride-detail {
-    padding: 10px;
+    padding: 0.625rem;
   }
 
   .ride-detail__card {
-    gap: 20px;
+    gap: 1.25rem;
   }
   .ride-detail__profile-photo {
     width: 70px;
@@ -414,19 +415,19 @@ main {
   }
 
   .search-hero__button {
-    min-width: 200px;
+    min-width: 12.5rem;
     align-self: center;
-    padding: 10px 30px;
+    padding: 0.625rem 1.875rem;
   }
 
   .hero__illustration {
     position: static;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     transform: none;
   }
 
   .hero__image {
-    max-width: 200px;
+    max-width: 12.5rem;
   }
 
   .footer__logo--hide-mobile {
