@@ -10,6 +10,7 @@
   padding: 0;
 }
 
+/*---------- 2. GLOBAL STYLES  ----------*/
 html,
 body {
   min-height: 100vh;
@@ -19,8 +20,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-/*---------- 2. GLOBAL STYLES  ----------*/
 
 main {
   flex: 1;
