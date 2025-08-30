@@ -12,10 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt = $pdo->prepare("
+            SELECT id, password, role, is_active
+            FROM users
+            WHERE email = ?
+            LIMIT 1
+        ");
     $stmt->execute([$email]);
     $user = $stmt->fetch();
     if ($user && password_verify($password, $user['password'])) {
+         if (!$user['is_active']) {
+        $erreur = "Votre compte est désactivé. Contactez un administrateur.";
+    } else {
         $_SESSION['role'] = $user['role'];
         $_SESSION['user_id'] = $user['id'];
         if ($user['role'] === 'admin') {
@@ -24,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: index.php');
         }
         exit;
+     }
     } else {
         $erreur = "Email ou mot de passe incorrect.";
     }
