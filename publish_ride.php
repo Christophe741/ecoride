@@ -34,12 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($vehicles)) {
     $vehicle_id      = $_POST['vehicle_id'] ?? '';
     $description     = trim($_POST['description'] ?? '');
 
-    // Vérifie que le véhicule sélectionné appartient bien à l'utilisateur
-    $vehCheck = $pdo->prepare('SELECT COUNT(*) FROM vehicles WHERE id = ? AND user_id = ?');
-    $vehCheck->execute([$vehicle_id, $driver_id]);
-    $isValidVehicle = $vehCheck->fetchColumn() > 0;
 
-    if ($departure_city && $arrival_city && $departure_time && $price && $seats && $duration && $isValidVehicle) {
+
+    if ($departure_city && $arrival_city && $departure_time && $price && $seats && $duration) {
         $insert = $pdo->prepare('INSERT INTO rides (driver_id, vehicle_id, departure_city, arrival_city, departure_time, price, seats, duration) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
         $success = $insert->execute([
             $driver_id,
