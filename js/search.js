@@ -89,14 +89,11 @@ function fetchRides(from, to, date, container, title) {
       if (data.success && data.rides.length) {
         data.rides.forEach((ride) => container.appendChild(buildCard(ride)));
       } else {
-        renderError(
-          "Erreur : Aucun trajet trouvé pour cette recherche.",
-          container
-        );
+        renderError("Aucun trajet trouvé pour cette recherche.", container);
       }
     })
     .catch(() => {
-      renderError("Erreur : Erreur lors du chargement des trajets.", container);
+      renderError("Erreur lors du chargement des trajets.", container);
     });
 }
 

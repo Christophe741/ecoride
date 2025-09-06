@@ -138,7 +138,7 @@ domReady(() => {
   const rideId = new URLSearchParams(window.location.search).get("id");
 
   if (!rideId) {
-    renderError("Erreur : aucun trajet sélectionné.", container);
+    renderError("Aucun trajet sélectionné.", container);
     return;
   }
 
