@@ -11,7 +11,7 @@ services:
       - db
       - mongo
   db:
-    image: mariadb:10.4
+    image: mariadb:12.0
     ports:
       - "3306:3306"
     restart: always
@@ -30,7 +30,7 @@ services:
     depends_on:
       - db
   mongo:
-    image: mongo:6
+    image: mongo:8.0
     restart: always
     volumes:
       - mongo_data:/data/db
