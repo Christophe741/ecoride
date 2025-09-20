@@ -126,12 +126,7 @@ function fetchRideDetail(rideId, container) {
       renderBackButton(container);
     })
     .catch(() => {
-      renderMessage(
-        "Erreur lors du chargement du trajet.",
-        container,
-        "clear",
-        "error"
-      );
+      renderMessage("Erreur lors du chargement du trajet.", container, "error");
     });
 }
 
