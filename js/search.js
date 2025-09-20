@@ -1,7 +1,6 @@
 // === Import des dépendances ===
 
-import { domReady } from "./domReady.js";
-import { cloneTemplate, renderError } from "./utils/dom.js";
+import { cloneTemplate, renderMessage } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
 
@@ -78,7 +77,6 @@ function fetchRides(from, to, date, container, title) {
   if (title) {
     title.hidden = false;
   }
-  container.innerHTML = "";
   fetch(
     `api/get_rides.php?from=${encodeURIComponent(from)}&to=${encodeURIComponent(
       to
@@ -89,11 +87,15 @@ function fetchRides(from, to, date, container, title) {
       if (data.success && data.rides.length) {
         data.rides.forEach((ride) => container.appendChild(buildCard(ride)));
       } else {
-        renderError("Aucun trajet trouvé pour cette recherche.", container);
+        renderMessage("Aucun trajet trouvé pour cette recherche.", container);
       }
     })
     .catch(() => {
-      renderError("Erreur lors du chargement des trajets.", container);
+      renderMessage(
+        "Erreur lors du chargement des trajets.",
+        container,
+        "error"
+      );
     });
 }
 
@@ -104,8 +106,10 @@ function handleFormSubmit(e, form, container, title) {
   const date = form.elements.date.value;
 
   if (!(from && to && date)) {
-    container.textContent =
-      "Veuillez saisir une ville de départ, d'arrivée et une date.";
+    renderMessage(
+      "Veuillez saisir une ville de départ, d'arrivée et une date.",
+      container
+    );
     return;
   }
 
@@ -129,19 +133,18 @@ function handlePopState(form, container, title) {
 
 // === Point d’entrée du script ===
 
-domReady(() => {
-  const container = document.getElementById("results");
-  const form = document.getElementById("search-form");
-  const title = document.getElementById("results-title");
-  const { from, to, date } = getPageParams();
-  if (from && to && date) {
-    fetchRides(from, to, date, container, title);
-  }
+const container = document.getElementById("results");
+const form = document.getElementById("search-form");
+const title = document.getElementById("results-title");
+const { from, to, date } = getPageParams();
 
+if (from && to && date) {
+  fetchRides(from, to, date, container, title);
+} else
   form.addEventListener("submit", (e) =>
     handleFormSubmit(e, form, container, title)
   );
-  window.addEventListener("popstate", () =>
-    handlePopState(form, container, title)
-  );
-});
+
+window.addEventListener("popstate", () =>
+  handlePopState(form, container, title)
+);

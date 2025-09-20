@@ -94,10 +94,10 @@ $basePath = '/';
       </div>
     </template>
 
-    <template id="error-template">
-      <p class="error"></p>
-    </template>
   </section>
+   <template id="message-template">
+      <p class="message"></p>
+    </template>
 </main>
 <script type="module" src="js/ride.js"></script>
 <?php require_once 'includes/footer.php'; ?>

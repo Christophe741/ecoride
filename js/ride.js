@@ -1,7 +1,6 @@
 // === Import des dépendances ===
 
-import { domReady } from "./domReady.js";
-import { cloneTemplate, renderError } from "./utils/dom.js";
+import { cloneTemplate, renderMessage } from "./utils/dom.js";
 
 // === Fonctions liées au rendu DOM ===
 
@@ -119,7 +118,7 @@ function fetchRideDetail(rideId, container) {
     .then((res) => res.json())
     .then((data) => {
       if (!data.success) {
-        renderError(data.message || "Trajet introuvable.", container);
+        renderMessage(data.message, container);
         return;
       }
 
@@ -127,20 +126,22 @@ function fetchRideDetail(rideId, container) {
       renderBackButton(container);
     })
     .catch(() => {
-      renderError("Erreur lors du chargement du trajet.", container);
+      renderMessage(
+        "Erreur lors du chargement du trajet.",
+        container,
+        "clear",
+        "error"
+      );
     });
 }
 
 // === Point d’entrée du script ===
 
-domReady(() => {
-  const container = document.getElementById("ride-detail");
-  const rideId = new URLSearchParams(window.location.search).get("id");
+const container = document.getElementById("ride-detail");
+const rideId = new URLSearchParams(window.location.search).get("id");
 
-  if (!rideId) {
-    renderError("Aucun trajet sélectionné.", container);
-    return;
-  }
-
+if (!rideId) {
+  renderMessage("Aucun trajet sélectionné.", container);
+} else {
   fetchRideDetail(rideId, container);
-});
+}

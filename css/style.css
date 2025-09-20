@@ -25,10 +25,31 @@ main {
   flex: 1;
 }
 
-.error {
-  color: #dc3545;
-  text-align: center;
-  margin: 0.625rem 0;
+.message {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.message.error {
+  background-color: #ffe5e5;
+  color: #b00020;
+  border: 1px solid #b00020;
+}
+
+.message.info {
+  background-color: #e8f4ff;
+  color: #00529b;
+  border: 1px solid #00529b;
+}
+
+.message.empty {
+  background: #eef6ff;
+  color: #2b4a6f;
+  border-radius: 0.5rem;
+  border: 1px solid #cfe3ff;
 }
 
 /*---------- 3. COMPONENT : footer.php ----------*/
