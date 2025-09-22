@@ -2,13 +2,13 @@
 $envLocalPath = __DIR__ . '/../.env.local';
 $envPath      = __DIR__ . '/../.env';
 
-$envFile = (file_exists($envLocalPath) && filesize($envLocalPath) > 0)
-    ? $envLocalPath
-    : $envPath;
+if (file_exists($envLocalPath) || file_exists($envPath)) {
+    $envFile = (file_exists($envLocalPath) && filesize($envLocalPath) > 0)
+        ? $envLocalPath
+        : $envPath;
 
-    if (file_exists($envFile)) {
     $lines = file($envFile);
-    foreach ($lines as $line) {  
+    foreach ($lines as $line) {
         $line = trim($line);
         if ($line === '' || str_starts_with($line, '#')) {
             continue;
@@ -18,14 +18,15 @@ $envFile = (file_exists($envLocalPath) && filesize($envLocalPath) > 0)
     }
 }
 
-$host = getenv('DB_HOST');
+$host   = getenv('DB_HOST');
 $dbname = getenv('DB_NAME');
-$user = getenv('DB_USER');
-$pass = getenv('DB_PASS');
+$user   = getenv('DB_USER');
+$pass   = getenv('DB_PASS');
+
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    ]);
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
-?>
