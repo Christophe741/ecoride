@@ -25,10 +25,11 @@ try {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
-$mongoUser = $_ENV['MONGO_USER'];
-$mongoPass = $_ENV['MONGO_PASS'];
-$mongoHost = $_ENV['MONGO_HOST'];
-$mongoDb   = $_ENV['MONGO_DB'];
+$mongoUser = $_ENV['MONGO_USER'] ?? getenv('MONGO_USER');
+$mongoPass = $_ENV['MONGO_PASS'] ?? getenv('MONGO_PASS');
+$mongoHost = $_ENV['MONGO_HOST'] ?? getenv('MONGO_HOST');
+$mongoDb   = $_ENV['MONGO_DB']   ?? getenv('MONGO_DB');
+
 
 $mongoUri = "mongodb://{$mongoUser}:{$mongoPass}@{$mongoHost}:27017/{$mongoDb}";
 
