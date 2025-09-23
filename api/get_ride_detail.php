@@ -1,6 +1,5 @@
 <?php
 require_once '../db/config.php';
-require_once '../db/mongo.php';
 header('Content-Type: application/json');
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;

@@ -1,32 +1,39 @@
 <?php
-$envLocalPath = __DIR__ . '/../.env.local';
-$envPath      = __DIR__ . '/../.env';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-if (file_exists($envLocalPath) || file_exists($envPath)) {
-    $envFile = (file_exists($envLocalPath) && filesize($envLocalPath) > 0)
-        ? $envLocalPath
-        : $envPath;
+use Dotenv\Dotenv;
 
-    $lines = file($envFile);
-    foreach ($lines as $line) {
-        $line = trim($line);
-        if ($line === '' || str_starts_with($line, '#')) {
-            continue;
-        }
-        list($name, $value) = explode('=', $line, 2);
-        putenv("$name=$value");
-    }
-}
+$root = dirname(__DIR__);
+$files = (is_file("$root/.env.local") && filesize("$root/.env.local") > 0)
+    ? ['.env.local']
+    : ['.env'];
 
-$host   = getenv('DB_HOST');
-$dbname = getenv('DB_NAME');
-$user   = getenv('DB_USER');
-$pass   = getenv('DB_PASS');
+Dotenv::createImmutable($root, $files)->safeLoad();
+
+$host   = $_ENV['DB_HOST'];
+$dbname = $_ENV['DB_NAME'];
+$user   = $_ENV['DB_USER'];
+$pass   = $_ENV['DB_PASS'];
+
+$dsn = "mysql:host={$host};dbname={$dbname};charset=utf8mb4";
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    ]);
+    $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
+
+$mongoUser = $_ENV['MONGO_USER'];
+$mongoPass = $_ENV['MONGO_PASS'];
+$mongoHost = $_ENV['MONGO_HOST'];
+$mongoDb   = $_ENV['MONGO_DB'];
+
+$mongoUri = "mongodb://{$mongoUser}:{$mongoPass}@{$mongoHost}:27017/{$mongoDb}";
+
+try {
+    $mongo = new MongoDB\Client($mongoUri);
+} catch (Exception $e) {
+    die('Erreur de connexion à MongoDB : ' . $e->getMessage());
+}
+
+$dbName = $mongoDb;

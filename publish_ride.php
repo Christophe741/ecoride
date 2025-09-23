@@ -2,7 +2,6 @@
 session_start();
 require_once 'includes/csrf.php';
 require_once 'db/config.php';
-require_once 'db/mongo.php';
 
 if (!isset($_SESSION['role']) || !isset($_SESSION['user_id'])) {
     header('Location: login.php');
