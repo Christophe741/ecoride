@@ -10,6 +10,8 @@ $files = (is_file("$root/.env.local") && filesize("$root/.env.local") > 0)
 
 Dotenv::createImmutable($root, $files)->safeLoad();
 
+$env = fn($k, $d=null) => $_ENV[$k] ?? getenv($k) ?? $d;
+
 $host   = $_ENV['DB_HOST'];
 $dbname = $_ENV['DB_NAME'];
 $user   = $_ENV['DB_USER'];
