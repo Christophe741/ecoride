@@ -1,4 +1,11 @@
 db = db.getSiblingDB("ecoride");
+
+db.createUser({
+  user: "app",
+  pwd: "secret",
+  roles: [{ role: "readWrite", db: "ecoride" }],
+});
+
 db.rides.insertMany([
   {
     ride_id: 5,
