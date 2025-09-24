@@ -29,7 +29,7 @@ $mongoHost = $_ENV['MONGO_HOST'];
 $mongoDb   = $_ENV['MONGO_DB'];
 
 
-$mongoUri = "mongodb://{$mongoUser}:{$mongoPass}@{$mongoHost}:27017/{$mongoDb}?authSource=admin";
+$mongoUri = "mongodb://{$mongoUser}:{$mongoPass}@{$mongoHost}:27017/{$mongoDb}";
 
 try {
     $mongo = new MongoDB\Client($mongoUri);
