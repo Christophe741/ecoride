@@ -4,7 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Dotenv\Dotenv;
 
 $root = dirname(__DIR__);
-$files = (is_file("$root/.env.local") && filesize("$root/.env.local") > 0)
+$files = (filesize("$root/.env.local") > 0)
     ? ['.env.local']
     : ['.env'];
 
