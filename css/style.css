@@ -350,7 +350,7 @@ main {
   font-size: 1.3rem;
   margin-bottom: 0.625rem;
 }
-/*---------- 10. PAGES : login & register.php & contact.php ----------*/
+/*---------- 10. PAGES : login & register.php & contact.php & add vehicle ----------*/
 .form-container {
   display: flex;
   flex-direction: column;
@@ -376,6 +376,7 @@ main {
 .form-container input[type="email"],
 .form-container input[type="password"],
 .form-container input[type="text"],
+.form-container select,
 .form-container textarea[name="message"] {
   width: 100%;
   padding: 0.85rem 0.95rem;
@@ -393,17 +394,34 @@ main {
 
 .form-container input[type="email"]::placeholder,
 .form-container input[type="password"]::placeholder,
+.form-container input[type="text"]::placeholder,
 .form-container textarea[name="message"] {
   color: #8b939b;
 }
 
 .form-container input[type="email"]:focus,
 .form-container input[type="password"]:focus,
+.form-container input[type="text"]:focus,
+.form-container select:focus,
 .form-container textarea[name="message"]:focus {
   outline: none;
   border-color: #45b78f;
   box-shadow: 0 0 0 4px rgba(69, 183, 143, 0.15);
   background: #fff;
+}
+
+.form-container select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b939b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1.2rem;
+  padding-right: 2.5rem;
+}
+
+.form-container select option:disabled {
+  color: #8b939b;
 }
 
 .form-container button[type="submit"] {
