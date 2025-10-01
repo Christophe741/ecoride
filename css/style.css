@@ -425,7 +425,118 @@ main {
 .form-container button[type="submit"]:active {
   transform: translateY(1px);
 }
+/*---------- 11. PAGE : publish.php ----------*/
+.publish-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: #f9f9f9;
+  border-radius: 0.75rem;
+  max-width: 400px;
+  margin: 2rem auto;
+}
 
+.publish-empty p {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.publish-empty__link {
+  display: inline-block;
+  background: #45b78f;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.publish-empty__link:hover {
+  background: #2e9b78;
+}
+
+.form-container .publish-form {
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem 1.75rem;
+}
+
+.publish-form__group {
+  margin-bottom: 1.25rem;
+}
+
+.publish-form__group--half {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.publish-form__row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.publish-form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.publish-form__input,
+.publish-form__select,
+.publish-form__textarea {
+  width: 100%;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid #d7dbdf;
+  border-radius: 10px;
+  font-size: 0.98rem;
+  font-family: Poppins, sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  background: #fafbfc;
+}
+
+.publish-form__input:focus,
+.publish-form__select:focus,
+.publish-form__textarea:focus {
+  outline: none;
+  border-color: #45b78f;
+  box-shadow: 0 0 0 4px rgba(69, 183, 143, 0.15);
+  background: #fff;
+}
+
+.publish-form__select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23555' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+  padding-right: 2.5rem;
+}
+
+.publish-form__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.publish-form__help {
+  display: block;
+  margin-top: 0.375rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.publish-form__add-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #45b78f;
+  text-decoration: none;
+}
+
+.publish-form__add-link:hover {
+  text-decoration: underline;
+}
 /*---------- MEDIA QUERIES ----------*/
 @media (max-width: 768px) {
   .header__menu {
@@ -523,5 +634,18 @@ main {
 
   .footer__logo--hide-mobile {
     display: none;
+  }
+
+  .publish-form__row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .publish-form__group--half {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-container .publish-form {
+    padding: 1.5rem 1.25rem;
   }
 }
