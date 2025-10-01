@@ -6,10 +6,10 @@ Bienvenue dans le projet **EcoRide**, une plateforme web de covoiturage écologi
 
 Créer un site web permettant aux utilisateurs de :
 
-- Rechercher et réserver des covoiturages
-- Démarrer et arrêter un covoiturage
-- Gérer son profil
-- Superviser l'activité de la plateforme (Pour les administrateurs)
+- Rechercher des covoiturages
+- Consulter le détail d'un trajet
+- Gérer son profil (en cours de développement)
+- Superviser l'activité de la plateforme (en cours de développement)
 
 ## Technologies utilisées
 
@@ -17,7 +17,6 @@ Créer un site web permettant aux utilisateurs de :
 - **PHP**
 - **MySQL**
 - **MongoDB**
-- **Chart.js**
 - **Notion**
 - **Figma**
 
@@ -31,7 +30,13 @@ Créer un site web permettant aux utilisateurs de :
 docker-compose up --build
 ```
 
-4. Le site est alors accessible sur [http://localhost:8080](http://localhost:8080) et l'interface PhpMyAdmin sur [http://localhost:8081](http://localhost:8081).
+4. Installer les dépendances PHP avec Composer :
+
+```sh
+docker-compose exec web composer install
+```
+
+5. Le site est alors accessible sur [http://localhost:8080](http://localhost:8080) et l'interface PhpMyAdmin sur [http://localhost:8081](http://localhost:8081).
 
 ## Auteur
 
