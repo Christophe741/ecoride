@@ -27,13 +27,13 @@ Créer un site web permettant aux utilisateurs de :
 3. Lancer l'application avec Docker :
 
 ```sh
-docker-compose up --build
+docker compose up --build
 ```
 
 4. Installer les dépendances PHP avec Composer :
 
 ```sh
-docker-compose exec web composer install
+docker compose exec web composer install
 ```
 
 5. Le site est alors accessible sur [http://localhost:8080](http://localhost:8080) et l'interface PhpMyAdmin sur [http://localhost:8081](http://localhost:8081).
