@@ -60,7 +60,7 @@ function updatePreferences(card, ride) {
 
 function updateEcoBadge(card, ride) {
   const badge = card.querySelector(".ride-card__badge");
-  if (ride.is_eco_friendly) {
+  if (ride.vehicle.fuel_type == "électrique") {
     badge.textContent = "✔ Écologique";
   } else {
     badge.remove();

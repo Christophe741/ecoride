@@ -9,10 +9,11 @@ $departureDate = trim($_GET['date'] ?? '');
 
 if ($departureCity && $arrivalCity && $departureDate) {
     $stmt = $pdo->prepare("SELECT rides.id, rides.seats, rides.price, rides.departure_city, 
-                                  rides.arrival_city, rides.is_eco_friendly, rides.departure_time,
-                                  users.username, users.rating, users.photo
+                                  rides.arrival_city, rides.departure_time,
+                                  users.username, users.rating, users.photo, vehicles.fuel_type
                            FROM rides
                            JOIN users ON rides.driver_id = users.id
+                           JOIN vehicles  ON vehicles.id = rides.vehicle_id
                            WHERE departure_city LIKE ?
                              AND arrival_city LIKE ?
                              AND DATE(departure_time) = ?
