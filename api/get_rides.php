@@ -16,6 +16,7 @@ if ($departureCity && $arrivalCity && $departureDate) {
                            WHERE departure_city LIKE ?
                              AND arrival_city LIKE ?
                              AND DATE(departure_time) = ?
+                             AND rides.seats > 0
                            ORDER BY departure_time ASC");
     $stmt->execute(["%$departureCity%", "%$arrivalCity%", $departureDate]);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
