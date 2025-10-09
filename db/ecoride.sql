@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mar. 29 juil. 2025 à 13:42
--- Version du serveur : 10.4.34-MariaDB-1:10.4.34+maria~ubu2004
+-- Généré le : mer. 08 oct. 2025 à 22:21
+-- Version du serveur : 12.0.2-MariaDB-ubu2404
 -- Version de PHP : 8.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -51,18 +51,17 @@ CREATE TABLE `rides` (
   `price` decimal(5,2) NOT NULL,
   `seats` int(11) NOT NULL,
   `duration` time NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `is_eco_friendly` tinyint(1) NOT NULL DEFAULT 0
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `rides`
 --
 
-INSERT INTO `rides` (`id`, `driver_id`, `vehicle_id`, `departure_city`, `arrival_city`, `departure_time`, `price`, `seats`, `duration`, `created_at`, `is_eco_friendly`) VALUES
-(4, 1, 1, 'Paris', 'Lyon', '2025-06-10 14:00:00', 55.00, 3, '05:30:00', '2025-04-30 15:49:05', 0),
-(5, 2, 2, 'Paris', 'Lyon', '2025-05-10 12:00:00', 70.00, 2, '05:10:00', '2025-04-30 16:11:55', 1),
-(13, 5, 2, 'Paris', 'Lyon', '2025-05-10 14:00:00', 60.00, 3, '05:00:00', '2025-07-11 00:48:52', 0);
+INSERT INTO `rides` (`id`, `driver_id`, `vehicle_id`, `departure_city`, `arrival_city`, `departure_time`, `price`, `seats`, `duration`, `created_at`) VALUES
+(4, 1, 1, 'Paris', 'Lyon', '2025-06-10 14:00:00', 55.00, 3, '05:30:00', '2025-04-30 15:49:05'),
+(5, 2, 2, 'Paris', 'Lyon', '2025-05-10 12:00:00', 70.00, 2, '05:10:00', '2025-04-30 16:11:55'),
+(13, 5, 3, 'Paris', 'Lyon', '2025-05-10 14:00:00', 60.00, 3, '05:00:00', '2025-07-11 00:48:52');
 
 -- --------------------------------------------------------
 
@@ -140,7 +139,7 @@ CREATE TABLE `vehicles` (
 INSERT INTO `vehicles` (`id`, `user_id`, `brand`, `model`, `fuel_type`, `created_at`) VALUES
 (1, 1, 'Renault', 'Clio V', 'essence', '2025-04-30 15:48:51'),
 (2, 2, 'Volkswagen', 'Golf 8', 'diesel', '2025-04-30 16:11:55'),
-(3, 7, 'Peugeot', '208', 'essence', '2025-07-02 18:33:21');
+(3, 7, 'Peugeot', '208', 'électrique', '2025-07-02 18:33:21');
 
 --
 -- Index pour les tables déchargées
