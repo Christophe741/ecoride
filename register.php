@@ -50,13 +50,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <main class="form-container">
   <h1>Créer un compte</h1>
    <?php if (!empty($erreur)) echo "<p style='color:red;'>$erreur</p>"; ?>
-  <form method="post" action="">
+    <form method="post" action="">
     <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
-    <input type="text" name="pseudo" placeholder="Pseudo" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Mot de passe" required>
+
+    <label for="pseudo" class="sr-only">Pseudo</label>
+    <input
+        type="text"
+        id="pseudo"
+        name="pseudo"
+        placeholder="Pseudo"
+        required
+    >
+
+    <label for="email" class="sr-only">Adresse e-mail</label>
+    <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+    >
+
+    <label for="password" class="sr-only">Mot de passe</label>
+    <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Mot de passe"
+        required
+    >
+
     <button type="submit">S'inscrire</button>
-  </form>
+    </form>
 </main>
 <?php require_once 'includes/footer.php'; ?>
 </body>

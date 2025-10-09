@@ -48,12 +48,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <main class="form-container">
     <h2>Connexion</h2>
     <?php if (!empty($erreur)) echo "<p style='color:red;'>$erreur</p>"; ?>
-    <form method="post">
+        <form method="post">
         <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="password" name="password" placeholder="Mot de passe" required><br>
+
+        <label for="email" class="sr-only">Adresse e-mail</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+        ><br>
+
+        <label for="password" class="sr-only">Mot de passe</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Mot de passe"
+            required
+        ><br>
+
         <button type="submit">Se connecter</button>
-    </form>
+        </form>
 </main>
 
 <?php require_once 'includes/footer.php'; ?>

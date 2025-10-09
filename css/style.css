@@ -52,6 +52,11 @@ main {
   border: 1px solid #cfe3ff;
 }
 
+.sr-only {
+  position: absolute;
+  clip-path: inset(50%);
+}
+
 /*---------- 3. COMPONENT : footer.php ----------*/
 .footer {
   position: relative;
