@@ -2,23 +2,23 @@
 
 Bienvenue dans le projet **EcoRide**, une plateforme web de covoiturage écologique, développée dans le cadre d’une formation Développeur Web & Web Mobile.
 
-## Objectif
+## Version MVP (Minimum Viable Product)
 
-Créer un site web permettant aux utilisateurs de :
+Cette version MVP se concentre sur la **fonctionnalité principale** : permettre aux utilisateurs de rechercher des trajets.
 
-- Rechercher des covoiturages
-- Consulter le détail d'un trajet
-- Gérer son profil (en cours de développement)
-- Superviser l'activité de la plateforme (en cours de développement)
+## Fonctionnalités complémentaires implémentées
+
+- Consultation du détail d'un trajet
+- Inscription et connexion utilisateur
 
 ## Technologies utilisées
 
-- **HTML / CSS / JavaScript**
-- **PHP**
-- **MySQL**
-- **MongoDB**
-- **Notion**
-- **Figma**
+- **Frontend** : HTML5, CSS3, JavaScript (Vanilla)
+- **Backend** : PHP (Vanilla)
+- **Base de données** : MariaDB, MongoDB
+- **Dépendances** : phpdotenv, mongodb/mongodb
+- **Outils** : Docker, Composer
+- **Conception** : Figma, Notion
 
 ## Lancer le projet en local
 
