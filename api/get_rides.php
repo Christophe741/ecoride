@@ -1,0 +1,27 @@
+<?php
+require_once '../db/config.php';
+
+header('Content-Type: application/json');
+
+$departureCity = trim($_GET['from'] ?? '');
+$arrivalCity   = trim($_GET['to'] ?? '');
+$departureDate = trim($_GET['date'] ?? '');
+
+if ($departureCity && $arrivalCity && $departureDate) {
+    $stmt = $pdo->prepare("SELECT rides.id, rides.seats, rides.price, rides.departure_city, 
+                                  rides.arrival_city, rides.departure_time,
+                                  users.username, users.rating, users.photo, vehicles.fuel_type
+                           FROM rides
+                           JOIN users ON rides.driver_id = users.id
+                           JOIN vehicles  ON vehicles.id = rides.vehicle_id
+                           WHERE departure_city LIKE ?
+                             AND arrival_city LIKE ?
+                             AND DATE(departure_time) = ?
+                             AND rides.seats > 0
+                           ORDER BY departure_time ASC");
+    $stmt->execute(["%$departureCity%", "%$arrivalCity%", $departureDate]);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode(['success' => true, 'rides' => $results]);
+} else {
+    echo json_encode(['success' => false, 'message' => 'Parametres manquants']);
+}

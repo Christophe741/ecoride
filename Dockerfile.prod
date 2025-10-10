@@ -1,0 +1,23 @@
+FROM composer:2 AS vendor
+WORKDIR /app
+COPY composer.json composer.lock ./
+
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install \
+    --no-dev --prefer-dist --optimize-autoloader \
+    --ignore-platform-req=ext-mongodb
+
+COPY . .
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer dump-autoload --optimize
+
+
+FROM php:8.3-apache
+WORKDIR /var/www/html
+
+RUN apt-get update \
+    && apt-get install -y git unzip libssl-dev pkg-config \
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb \
+    && docker-php-ext-install pdo_mysql \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=vendor /app ./

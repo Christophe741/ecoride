@@ -2,24 +2,23 @@
 
 Bienvenue dans le projet **EcoRide**, une plateforme web de covoiturage écologique, développée dans le cadre d’une formation Développeur Web & Web Mobile.
 
-## Objectif
+## Version MVP (Minimum Viable Product)
 
-Créer un site web permettant aux utilisateurs de :
+Cette version MVP se concentre sur la **fonctionnalité principale** : permettre aux utilisateurs de rechercher des trajets.
 
-- Rechercher et réserver des covoiturages
-- Démarrer et arrêter un covoiturage
-- Gérer son profil
-- Superviser l'activité de la plateforme (Pour les administrateurs)
+## Fonctionnalités complémentaires implémentées
+
+- Consultation du détail d'un trajet
+- Inscription et connexion utilisateur
 
 ## Technologies utilisées
 
-- **HTML / CSS / JavaScript**
-- **PHP**
-- **MySQL**
-- **MongoDB**
-- **Chart.js**
-- **Notion**
-- **Figma**
+- **Frontend** : HTML5, CSS3, JavaScript (Vanilla)
+- **Backend** : PHP (Vanilla)
+- **Base de données** : MariaDB, MongoDB
+- **Dépendances** : phpdotenv, mongodb/mongodb
+- **Outils** : Docker, Composer
+- **Conception** : Figma, Notion
 
 ## Lancer le projet en local
 
@@ -28,10 +27,16 @@ Créer un site web permettant aux utilisateurs de :
 3. Lancer l'application avec Docker :
 
 ```sh
-docker-compose up --build
+docker compose up --build
 ```
 
-4. Le site est alors accessible sur [http://localhost:8080](http://localhost:8080) et l'interface PhpMyAdmin sur [http://localhost:8081](http://localhost:8081).
+4. Installer les dépendances PHP avec Composer :
+
+```sh
+docker compose exec web composer install
+```
+
+5. Le site est alors accessible sur [http://localhost:8080](http://localhost:8080) et l'interface PhpMyAdmin sur [http://localhost:8081](http://localhost:8081).
 
 ## Auteur
 
