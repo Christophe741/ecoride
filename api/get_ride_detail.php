@@ -36,7 +36,7 @@ if ($ride) {
     
     $preferences = [];
     foreach ($labels as $field => $label) {
-        if (isset($ride[$field]) && !empty($ride[$field])) {
+        if (isset($ride[$field])) {
             $preferences[] = [
                 'key' => $label,
                 'value' => $ride[$field]
